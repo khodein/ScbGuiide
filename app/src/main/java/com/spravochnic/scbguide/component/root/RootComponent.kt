@@ -4,6 +4,7 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.backhandler.BackHandlerOwner
 import com.spravochnic.scbguide.component.home.HomeComponent
+import com.spravochnic.scbguide.component.splash.SplashComponent
 
 interface RootComponent : BackHandlerOwner {
 
@@ -14,5 +15,6 @@ interface RootComponent : BackHandlerOwner {
 
     sealed class Child {
         class HomeChild(val component: HomeComponent): Child()
+        class SplashChild(val component: SplashComponent): Child()
     }
 }

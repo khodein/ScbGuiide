@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.decompose)
     implementation(libs.decompose.extensionsDecompose)
     implementation(libs.decompose.extensionsAndroid)
+    implementation(libs.decompose.lifecycleCoroutines)
 
     implementation(libs.serialization.json)
 

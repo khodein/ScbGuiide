@@ -1,4 +1,4 @@
-package com.spravochnic.scbguide
+package com.spravochnic.scbguide.preview
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.DefaultComponentContext

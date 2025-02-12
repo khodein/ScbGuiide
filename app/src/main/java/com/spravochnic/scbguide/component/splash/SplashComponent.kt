@@ -1,9 +1,23 @@
 package com.spravochnic.scbguide.component.splash
 
-import com.arkivanov.decompose.router.stack.ChildStack
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import com.arkivanov.decompose.value.Value
 
 interface SplashComponent {
+    val state: Value<State>
 
-    val stack: Value<ChildStack<*, SplashComponent>>
+    fun onFinish()
+
+    interface Provider {
+        fun onSplashFinish()
+    }
+
+    data class State(
+        @StringRes val footerTextRes: Int,
+        @StringRes val centerTextRes: Int,
+        @DrawableRes val imageCenterRes: Int,
+        @DrawableRes val backgroundRes: Int,
+        val duration: Long,
+    )
 }
