@@ -4,10 +4,12 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 import com.spravochnic.scbguide.R
+import com.spravochnic.scbguide.navigate.NavProvider
+import com.spravochnic.scbguide.navigate.SplashProvider
 
 class DefaultSplashComponent(
     componentContext: ComponentContext,
-    private val provider: SplashComponent.Provider,
+    private val provider: SplashProvider,
 ) : SplashComponent, ComponentContext by componentContext {
 
     private val _state = MutableValue(
@@ -22,6 +24,6 @@ class DefaultSplashComponent(
     override val state: Value<SplashComponent.State> = _state
 
     override fun onFinish() {
-        provider.onSplashFinish()
+        provider.finishSplash()
     }
 }

@@ -7,15 +7,11 @@ import com.arkivanov.decompose.value.update
 
 class DefaultNavItemComponent(
     private val provider: NavItemComponent.Provider,
+    state: NavItemComponent.State,
     componentContext: ComponentContext,
 ) : NavItemComponent, ComponentContext by componentContext {
 
-    private val _stateValue = MutableValue(
-        NavItemComponent.State(
-            id = "",
-            text = ""
-        )
-    )
+    private val _stateValue = MutableValue(state)
     override val stateValue: Value<NavItemComponent.State> = _stateValue
 
     override fun update(state: NavItemComponent.State) {

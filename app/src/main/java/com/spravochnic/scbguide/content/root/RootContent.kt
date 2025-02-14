@@ -64,6 +64,10 @@ private fun Children(component: RootComponent, modifier: Modifier = Modifier) {
                     component = child.component,
                     modifier = Modifier.fillMaxSize()
                 )
+
+                else -> {
+
+                }
             }
         }
     }

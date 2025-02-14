@@ -16,6 +16,7 @@ import com.arkivanov.decompose.defaultComponentContext
 import com.spravochnic.scbguide.component.root.DefaultRootComponent
 import com.spravochnic.scbguide.content.root.RootContent
 import com.spravochnic.scbguide.ui.theme.ScbGuiideTheme
+import com.spravochnic.scbguide.utils.ResManagerImpl
 
 class MainActivity : ComponentActivity() {
 
@@ -28,6 +29,7 @@ class MainActivity : ComponentActivity() {
         val rootComponent =
             DefaultRootComponent(
                 componentContext = defaultComponentContext(),
+                resManager = ResManagerImpl(context = this)
             )
 
         setContent {

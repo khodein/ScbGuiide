@@ -40,6 +40,16 @@ val Regular_13 = Regular.copy(
     lineHeight = 22.sp
 )
 
+val Regular_14 = Regular.copy(
+    fontSize = 14.sp,
+    lineHeight = 22.sp
+)
+
+val Bold_16 = Bold.copy(
+    fontSize = 16.sp,
+    lineHeight = 22.sp
+)
+
 val Bold_22 = Bold.copy(
     fontSize = 22.sp,
     lineHeight = 33.sp,
@@ -47,5 +57,10 @@ val Bold_22 = Bold.copy(
 
 val ExtraBold_15 = ExtraBold.copy(
     fontSize = 15.sp,
+    lineHeight = 25.sp
+)
+
+val ExtraBold_16 = ExtraBold.copy(
+    fontSize = 16.sp,
     lineHeight = 25.sp
 )

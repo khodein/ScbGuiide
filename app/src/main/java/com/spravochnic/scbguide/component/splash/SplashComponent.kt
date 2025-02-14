@@ -9,10 +9,6 @@ interface SplashComponent {
 
     fun onFinish()
 
-    interface Provider {
-        fun onSplashFinish()
-    }
-
     data class State(
         @StringRes val footerTextRes: Int,
         @StringRes val centerTextRes: Int,

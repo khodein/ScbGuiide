@@ -16,5 +16,7 @@ interface RootComponent : BackHandlerOwner {
     sealed class Child {
         class HomeChild(val component: HomeComponent): Child()
         class SplashChild(val component: SplashComponent): Child()
+        class LectoryChild: Child()
+        class TestChild: Child()
     }
 }

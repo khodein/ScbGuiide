@@ -12,13 +12,21 @@ import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.decompose.router.stack.pushToFront
 import com.arkivanov.decompose.value.Value
 import com.spravochnic.scbguide.component.home.DefaultHomeComponent
+import com.spravochnic.scbguide.component.home.HomeComponent
 import com.spravochnic.scbguide.component.splash.DefaultSplashComponent
 import com.spravochnic.scbguide.component.splash.SplashComponent
+import com.spravochnic.scbguide.navigate.HomeProvider
+import com.spravochnic.scbguide.navigate.NavProvider
+import com.spravochnic.scbguide.navigate.SplashProvider
+import com.spravochnic.scbguide.utils.ResManager
 import kotlinx.serialization.Serializable
 
 class DefaultRootComponent(
     componentContext: ComponentContext,
-) : RootComponent, ComponentContext by componentContext, SplashComponent.Provider {
+    private val resManager: ResManager,
+) : RootComponent, ComponentContext by componentContext,
+    HomeProvider,
+    SplashProvider {
 
     private val nav = StackNavigation<Config>()
 
@@ -39,7 +47,11 @@ class DefaultRootComponent(
     private fun child(config: Config, componentContext: ComponentContext): RootComponent.Child {
         return when(config) {
             is Config.Home -> RootComponent.Child.HomeChild(
-                DefaultHomeComponent(componentContext = componentContext)
+                DefaultHomeComponent(
+                    componentContext = componentContext,
+                    resManager = resManager,
+                    provider = this
+                )
             )
 
             is Config.Splash -> RootComponent.Child.SplashChild(
@@ -48,6 +60,10 @@ class DefaultRootComponent(
                     provider = this
                 )
             )
+
+            is Config.Lectory -> RootComponent.Child.LectoryChild()
+
+            is Config.Test -> RootComponent.Child.TestChild()
         }
     }
 
@@ -63,16 +79,31 @@ class DefaultRootComponent(
         return listOf(Config.Home)
     }
 
-    override fun onSplashFinish() {
-        onBackClicked()
-    }
-
     @Serializable
     private sealed interface Config {
+
+        @Serializable
+        data object Test: Config
+
+        @Serializable
+        data object Lectory: Config
+
         @Serializable
         data object Home : Config
 
         @Serializable
         data object Splash: Config
+    }
+
+    override fun gotoLectory() {
+        nav.pushNew(Config.Lectory)
+    }
+
+    override fun gotoTest() {
+        nav.pushNew(Config.Test)
+    }
+
+    override fun finishSplash() {
+        onBackClicked()
     }
 }
