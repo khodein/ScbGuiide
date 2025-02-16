@@ -3,7 +3,7 @@ package com.spravochnic.scbguide.uikit.notice.component
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
-import com.spravochnic.scbguide.preview.PreviewComponentContext
+import com.spravochnic.scbguide.utils.preview.PreviewComponentContext
 
 class PreviewNoticeItemComponent
     : NoticeItemComponent,

@@ -12,28 +12,24 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.GenericShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import com.spravochnic.scbguide.R
-import com.spravochnic.scbguide.ui.color.Secondary
-import com.spravochnic.scbguide.ui.color.TextPrimaryInverse
-import com.spravochnic.scbguide.ui.style.ExtraBold_15
-import com.spravochnic.scbguide.ui.style.ExtraBold_16
-import com.spravochnic.scbguide.ui.style.Regular_13
-import com.spravochnic.scbguide.ui.style.Regular_14
 import com.spravochnic.scbguide.uikit.notice.component.NoticeItemComponent
 import com.spravochnic.scbguide.uikit.notice.component.PreviewNoticeItemComponent
+import com.spravochnic.scbguide.uikit.theme.color.Secondary
+import com.spravochnic.scbguide.uikit.theme.color.TextPrimaryInverse
+import com.spravochnic.scbguide.uikit.theme.style.ExtraBold_16
+import com.spravochnic.scbguide.uikit.theme.style.Regular_14
 
 @Composable
 fun NoticeItemContent(
@@ -51,7 +47,9 @@ fun NoticeItemContent(
             .padding(top = 20.dp)
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp)
         ) {
             Image(
                 modifier = Modifier.size(34.dp),
@@ -89,7 +87,7 @@ fun NoticeItemContent(
 
             Image(
                 modifier = Modifier
-                    .height(210.dp)
+                    .height(160.dp)
                     .width(100.dp)
                     .align(Alignment.Bottom),
                 painter = painterResource(R.drawable.art_worker),

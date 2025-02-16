@@ -1,7 +1,5 @@
 package com.spravochnic.scbguide.uikit.navitem.content
 
-import android.graphics.drawable.shapes.Shape
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material3.Text
@@ -29,15 +26,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
-import com.spravochnic.scbguide.R
-import com.spravochnic.scbguide.ui.color.Note
-import com.spravochnic.scbguide.ui.color.Tertiary
-import com.spravochnic.scbguide.ui.color.TextPrimary
-import com.spravochnic.scbguide.ui.color.TextTertiary
-import com.spravochnic.scbguide.ui.style.ExtraBold_15
-import com.spravochnic.scbguide.ui.style.Regular_13
 import com.spravochnic.scbguide.uikit.navitem.component.NavItemComponent
 import com.spravochnic.scbguide.uikit.navitem.component.PreviewNavItemComponent
+import com.spravochnic.scbguide.uikit.theme.color.Tertiary
+import com.spravochnic.scbguide.uikit.theme.color.TextPrimary
+import com.spravochnic.scbguide.uikit.theme.color.TextTertiary
+import com.spravochnic.scbguide.uikit.theme.style.ExtraBold_15
+import com.spravochnic.scbguide.uikit.theme.style.Regular_13
 
 @Composable
 fun NavItemContent(
@@ -48,11 +43,8 @@ fun NavItemContent(
 
     Row(
         modifier = modifier
-            .fillMaxWidth()
             .padding(20.dp)
-            .clickable {
-                component.onClickNavItem()
-            },
+            .clickable { state.onClick?.invoke(state) },
         verticalAlignment = Alignment.CenterVertically
     ) {
         state.leading?.let { leading ->
@@ -92,7 +84,7 @@ fun NavItemContent(
         }
 
         state.trailing?.let { trailing ->
-            when(trailing) {
+            when (trailing) {
                 is NavItemComponent.State.Trailing.Arrow -> {
                     Image(
                         modifier = Modifier.size(32.dp),
@@ -112,6 +104,7 @@ internal fun NavItemContentPreview() {
     NavItemContent(
         component = PreviewNavItemComponent(),
         modifier = Modifier
+            .fillMaxWidth()
             .height(100.dp)
             .clip(CircleShape.copy(CornerSize(20.dp)))
             .shadow(elevation = 4.dp)

@@ -5,10 +5,10 @@ import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 
 class DefaultNoticeItemComponent(
-    state: NoticeItemComponent.State,
+    initialState: NoticeItemComponent.State,
     componentContext: ComponentContext,
 ) : NoticeItemComponent, ComponentContext by componentContext {
 
-    private val _stateValue = MutableValue(state)
+    private val _stateValue = MutableValue(initialState)
     override val stateValue: Value<NoticeItemComponent.State> = _stateValue
 }
