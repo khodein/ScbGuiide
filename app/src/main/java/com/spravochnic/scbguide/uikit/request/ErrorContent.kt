@@ -1,4 +1,4 @@
-package com.spravochnic.scbguide.uikit.request.content.error
+package com.spravochnic.scbguide.uikit.request
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
@@ -19,17 +18,15 @@ import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.arkivanov.decompose.extensions.compose.subscribeAsState
-import com.arkivanov.decompose.value.Value
-import com.spravochnic.scbguide.uikit.button.component.ButtonItemComponent
-import com.spravochnic.scbguide.uikit.button.content.ButtonItemContent
-import com.spravochnic.scbguide.uikit.request.component.RequestComponent
+import com.spravochnic.scbguide.uikit.button.ButtonItemComponent
+import com.spravochnic.scbguide.uikit.button.ButtonItemContent
+import com.spravochnic.scbguide.uikit.theme.color.Note
+import com.spravochnic.scbguide.uikit.theme.color.TextPrimaryInverse
 import com.spravochnic.scbguide.uikit.theme.style.Bold_16
 
 @Composable
 fun ErrorContent(
     modifier: Modifier,
-    reloadButtonItemComponent: Value<ButtonItemComponent>,
     requestState: RequestComponent.State.Error,
 ) {
     Column(
@@ -38,15 +35,21 @@ fun ErrorContent(
             .wrapContentWidth(),
         verticalArrangement = Arrangement.Center,
     ) {
-        val reloadButton by reloadButtonItemComponent.subscribeAsState()
-
-        if (reloadButton.stateValue.value.text.isNotEmpty() && reloadButton.stateValue.value.onClick != null) {
+        if (!requestState.buttonReloadMessage.isNullOrEmpty() && requestState.onReloadClick != null) {
             ButtonItemContent(
                 modifier = Modifier
                     .padding(bottom = 10.dp)
                     .width(250.dp)
                     .align(Alignment.CenterHorizontally),
-                component = reloadButton
+                state = ButtonItemComponent.State(
+                    id = "error_content_button_reload",
+                    text = requestState.buttonReloadMessage,
+                    onClick = requestState.onReloadClick,
+                    fill = ButtonItemComponent.Fill.Custom(
+                        background = Note,
+                        textColor = TextPrimaryInverse
+                    )
+                )
             )
         }
 

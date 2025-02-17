@@ -1,23 +1,17 @@
-package com.spravochnic.scbguide.uikit.request.component
+package com.spravochnic.scbguide.uikit.request
 
 import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.arkivanov.decompose.value.Value
 import com.spravochnic.scbguide.R
-import com.spravochnic.scbguide.uikit.button.component.ButtonItemComponent
 import com.spravochnic.scbguide.uikit.theme.color.Note
 import com.spravochnic.scbguide.uikit.theme.color.Secondary
+import kotlinx.serialization.Serializable
 
 interface RequestComponent {
 
-    val stateValue: Value<State>
-
-    val buttonReloadValue: Value<ButtonItemComponent>
-
-    fun update(state: State)
-
+    @Serializable
     sealed class State {
         data object Idle : State()
 

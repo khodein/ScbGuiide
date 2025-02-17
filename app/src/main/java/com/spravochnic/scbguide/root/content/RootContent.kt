@@ -47,7 +47,8 @@ private fun Children(component: RootComponent, modifier: Modifier = Modifier) {
             onBack = component::pop,
         ),
     ) { children ->
-        Surface(
+
+    Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {

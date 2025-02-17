@@ -1,6 +1,6 @@
 package com.spravochnic.scbguide.rootcatalog.model
 
-enum class RootCatalogTypeModel {
-    LECTORY,
-    QUEST,
+enum class RootCatalogTypeModel(val alias: String) {
+    LECTORY(alias = "lectory"),
+    QUEST(alias = "quest"),
 }

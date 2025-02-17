@@ -8,7 +8,7 @@ interface RootNavigator :
     RootCatalogNavigator,
     CatalogNavigator {
 
-    fun init(stackNavigation: StackNavigation<RootConfig>)
+    fun init(parent: StackNavigation<RootConfig>)
 
     fun pushNew(config: RootConfig)
     fun replaceCurrent(config: RootConfig)

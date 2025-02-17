@@ -10,11 +10,11 @@ import com.spravochnic.scbguide.rootcatalog.navigator.RootCatalogNavigator
 import java.lang.ref.WeakReference
 
 class RootNavigatorImpl(
-    rootCatalogNavigator: RootCatalogNavigator,
-    catalogNavigator: CatalogNavigator,
+    private val rootCatalogNavigator: RootCatalogNavigator,
+    private val catalogNavigator: CatalogNavigator,
 ) : RootNavigator,
-    RootCatalogNavigator by rootCatalogNavigator,
-    CatalogNavigator by catalogNavigator {
+    CatalogNavigator by catalogNavigator,
+    RootCatalogNavigator by rootCatalogNavigator {
 
     private var weakReferenceStackNavigation: WeakReference<StackNavigation<RootConfig>>? = null
     private val stackNavigation: StackNavigation<RootConfig>?
@@ -25,8 +25,13 @@ class RootNavigatorImpl(
         catalogNavigator.init(this)
     }
 
-    override fun init(stackNavigation: StackNavigation<RootConfig>) {
-        this.weakReferenceStackNavigation = WeakReference(stackNavigation)
+    override fun init(parent: RootNavigator) {
+        rootCatalogNavigator.init(parent)
+        catalogNavigator.init(parent)
+    }
+
+    override fun init(parent: StackNavigation<RootConfig>) {
+        this.weakReferenceStackNavigation = WeakReference(parent)
     }
 
     override fun pushNew(config: RootConfig) {

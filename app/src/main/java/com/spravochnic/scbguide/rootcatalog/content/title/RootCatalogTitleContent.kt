@@ -9,26 +9,21 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.arkivanov.decompose.extensions.compose.subscribeAsState
-import com.spravochnic.scbguide.rootcatalog.component.title.PreviewRootCatalogTitleComponent
-import com.spravochnic.scbguide.rootcatalog.component.title.RootCatalogTitleComponent
+import com.spravochnic.scbguide.R
 import com.spravochnic.scbguide.uikit.theme.color.TextPrimary
 import com.spravochnic.scbguide.uikit.theme.color.TextSecondary
 import com.spravochnic.scbguide.uikit.theme.style.Bold_16
 
 @Composable
 fun HomeTitleContent(
-    component: RootCatalogTitleComponent,
+    state: RootCatalogTitleComponent.State,
     modifier: Modifier = Modifier,
 ) {
-    val state by component.stateValue.subscribeAsState()
-
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -70,6 +65,14 @@ fun HomeTitleContent(
 
 @Preview
 @Composable
-internal fun PreviewHomeTitleContent() {
-    HomeTitleContent(PreviewRootCatalogTitleComponent())
+private fun PreviewHomeTitleContent() {
+    HomeTitleContent(
+        RootCatalogTitleComponent.State(
+            title = "Title",
+            subTitle = RootCatalogTitleComponent.State.SubTitle(
+                text = "Subtitle",
+                leadingRes = R.drawable.ic_award
+            )
+        )
+    )
 }

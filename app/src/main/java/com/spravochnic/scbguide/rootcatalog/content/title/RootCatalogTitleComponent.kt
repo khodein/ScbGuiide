@@ -1,12 +1,8 @@
-package com.spravochnic.scbguide.rootcatalog.component.title
+package com.spravochnic.scbguide.rootcatalog.content.title
 
 import androidx.annotation.DrawableRes
-import com.arkivanov.decompose.value.Value
 
 interface RootCatalogTitleComponent {
-    val stateValue: Value<State>
-
-    fun update(state: State)
 
     data class State(
         val title: String,

@@ -14,15 +14,12 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
-import com.spravochnic.scbguide.rootcatalog.component.PreviewRootCatalogComponent
-import com.spravochnic.scbguide.rootcatalog.component.RootCatalogComponent
-import com.spravochnic.scbguide.rootcatalog.component.title.RootCatalogTitleComponent
+import com.spravochnic.scbguide.rootcatalog.PreviewRootCatalogComponent
+import com.spravochnic.scbguide.rootcatalog.RootCatalogComponent
 import com.spravochnic.scbguide.rootcatalog.content.title.HomeTitleContent
-import com.spravochnic.scbguide.uikit.navitem.component.NavItemComponent
-import com.spravochnic.scbguide.uikit.navitem.content.NavItemContent
-import com.spravochnic.scbguide.uikit.notice.component.NoticeItemComponent
-import com.spravochnic.scbguide.uikit.notice.content.NoticeItemContent
-import com.spravochnic.scbguide.uikit.request.content.RequestContent
+import com.spravochnic.scbguide.uikit.navitem.NavItemContent
+import com.spravochnic.scbguide.uikit.notice.NoticeItemContent
+import com.spravochnic.scbguide.uikit.request.RequestContent
 import com.spravochnic.scbguide.uikit.theme.color.Tertiary
 
 @Composable
@@ -33,12 +30,10 @@ fun RootCatalogContent(
     val stateValue by component.stateValue.subscribeAsState()
 
     when (val state = stateValue) {
-        is RootCatalogComponent.State.Request -> {
-            RequestContent(
-                modifier = modifier,
-                component = state.component,
-            )
-        }
+        is RootCatalogComponent.State.Request -> RequestChildContent(
+            modifier = modifier,
+            requestState = state
+        )
 
         is RootCatalogComponent.State.Success -> {
             LazyColumn(
@@ -46,13 +41,16 @@ fun RootCatalogContent(
             ) {
                 items(state.list) { listComponent ->
                     when (listComponent) {
-                        is RootCatalogComponent.Child.TitleChild -> TitleChildContent(listComponent.titleRootCatalogComponent)
+                        is RootCatalogComponent.Child.TitleChild -> TitleChildContent(
+                            listComponent
+                        )
+
                         is RootCatalogComponent.Child.NoticeChild -> NoticeChildContent(
-                            listComponent.noticeItemComponent
+                            listComponent
                         )
 
                         is RootCatalogComponent.Child.NavItemChild -> NavItemChildContent(
-                            listComponent.navItemComponent
+                            listComponent
                         )
                     }
                 }
@@ -62,9 +60,20 @@ fun RootCatalogContent(
 }
 
 @Composable
-private fun TitleChildContent(component: RootCatalogTitleComponent) {
+private fun RequestChildContent(
+    modifier: Modifier,
+    requestState: RootCatalogComponent.State.Request
+) {
+    RequestContent(
+        modifier = modifier,
+        state = requestState.state,
+    )
+}
+
+@Composable
+private fun TitleChildContent(child: RootCatalogComponent.Child.TitleChild) {
     HomeTitleContent(
-        component = component,
+        state = child.state,
         modifier = Modifier
             .fillMaxWidth()
             .padding(
@@ -76,9 +85,9 @@ private fun TitleChildContent(component: RootCatalogTitleComponent) {
 }
 
 @Composable
-private fun NoticeChildContent(component: NoticeItemComponent) {
+private fun NoticeChildContent(child: RootCatalogComponent.Child.NoticeChild) {
     NoticeItemContent(
-        component = component,
+        state = child.state,
         modifier = Modifier
             .fillMaxWidth()
             .padding(
@@ -90,7 +99,7 @@ private fun NoticeChildContent(component: NoticeItemComponent) {
 }
 
 @Composable
-private fun NavItemChildContent(component: NavItemComponent) {
+private fun NavItemChildContent(child: RootCatalogComponent.Child.NavItemChild) {
     NavItemContent(
         modifier = Modifier
             .fillMaxWidth()
@@ -104,7 +113,7 @@ private fun NavItemChildContent(component: NavItemComponent) {
                 color = Tertiary,
                 shape = RoundedCornerShape(20.dp)
             ),
-        component = component
+        state = child.state
     )
 }
 

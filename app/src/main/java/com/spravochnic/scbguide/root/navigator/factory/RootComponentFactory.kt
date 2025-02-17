@@ -1,14 +1,15 @@
 package com.spravochnic.scbguide.root.navigator.factory
 
 import com.arkivanov.decompose.ComponentContext
-import com.spravochnic.scbguide.catalog.component.CatalogComponent
-import com.spravochnic.scbguide.catalog.component.DefaultCatalogComponent
+import com.spravochnic.scbguide.catalog.CatalogComponent
+import com.spravochnic.scbguide.catalog.DefaultCatalogComponent
+import com.spravochnic.scbguide.catalog.repository.CatalogRepositoryImpl
 import com.spravochnic.scbguide.db.ScbDatabase
 import com.spravochnic.scbguide.root.navigator.RootConfig
 import com.spravochnic.scbguide.root.navigator.RootNavigator
 import com.spravochnic.scbguide.root.repository.RootRepositoryImpl
-import com.spravochnic.scbguide.rootcatalog.component.DefaultRootCatalogComponent
-import com.spravochnic.scbguide.rootcatalog.component.RootCatalogComponent
+import com.spravochnic.scbguide.rootcatalog.DefaultRootCatalogComponent
+import com.spravochnic.scbguide.rootcatalog.RootCatalogComponent
 import com.spravochnic.scbguide.rootcatalog.repository.RootCatalogRepositoryImpl
 import com.spravochnic.scbguide.splash.DefaultSplashComponent
 import com.spravochnic.scbguide.splash.SplashComponent
@@ -19,6 +20,9 @@ class RootComponentFactory(
     private val resManager: ResManager,
     private val scbDatabase: ScbDatabase,
 ) {
+    private val statusDao by lazy { scbDatabase.statusDao() }
+    private val rootCatalogDao by lazy { scbDatabase.rootCatalogDao() }
+    private val catalogDao by lazy { scbDatabase.catalogDao() }
 
     fun get(
         config: RootConfig,
@@ -31,7 +35,11 @@ class RootComponentFactory(
                 )
             )
 
-            is RootConfig.Splash -> ChildComponent.SplashChild(getSplashComponent(componentContext))
+            is RootConfig.Splash -> ChildComponent.SplashChild(
+                getSplashComponent(
+                    componentContext
+                )
+            )
 
             is RootConfig.Catalog -> ChildComponent.CatalogChild(
                 getCatalogComponent(
@@ -51,16 +59,16 @@ class RootComponentFactory(
     private fun getRootCatalogComponent(
         componentContext: ComponentContext,
     ): RootCatalogComponent {
-        val rootCatalogDao = scbDatabase.rootCatalogDao()
-
         return DefaultRootCatalogComponent(
             componentContext = componentContext,
             rootCatalogRepository = RootCatalogRepositoryImpl(
-                rootCatalogDao = rootCatalogDao
+                rootCatalogDao = rootCatalogDao,
+                resManager = resManager
             ),
             rootRepository = RootRepositoryImpl(
-                statusDao = scbDatabase.statusDao(),
-                rootCatalogDao = rootCatalogDao
+                statusDao = statusDao,
+                rootCatalogDao = rootCatalogDao,
+                catalogDao = catalogDao,
             ),
             rootNavigator = rootNavigator,
             resManager = resManager,
@@ -70,6 +78,12 @@ class RootComponentFactory(
     private fun getCatalogComponent(
         componentContext: ComponentContext
     ): CatalogComponent {
-        return DefaultCatalogComponent(componentContext)
+        return DefaultCatalogComponent(
+            componentContext = componentContext,
+            resManager = resManager,
+            catalogRepository = CatalogRepositoryImpl(
+                catalogDao = catalogDao
+            )
+        )
     }
 }

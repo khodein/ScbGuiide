@@ -4,11 +4,13 @@ import com.spravochnic.scbguide.rootcatalog.db.RootCatalogDao
 import com.spravochnic.scbguide.rootcatalog.model.RootCatalogListModel
 import com.spravochnic.scbguide.rootcatalog.model.RootCatalogModel
 import com.spravochnic.scbguide.rootcatalog.model.RootCatalogTypeModel
+import com.spravochnic.scbguide.utils.resmanager.ResManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class RootCatalogRepositoryImpl(
     private val rootCatalogDao: RootCatalogDao,
+    private val resManager: ResManager,
 ) : RootCatalogRepository {
 
     override suspend fun getRootCatalog(): RootCatalogListModel {

@@ -1,4 +1,4 @@
-package com.spravochnic.scbguide.uikit.navitem.component
+package com.spravochnic.scbguide.uikit.navitem
 
 import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.Color

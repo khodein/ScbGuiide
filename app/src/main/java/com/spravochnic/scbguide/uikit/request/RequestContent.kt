@@ -1,30 +1,22 @@
-package com.spravochnic.scbguide.uikit.request.content
+package com.spravochnic.scbguide.uikit.request
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.arkivanov.decompose.extensions.compose.subscribeAsState
-import com.spravochnic.scbguide.uikit.request.component.PreviewRequestComponent
-import com.spravochnic.scbguide.uikit.request.component.RequestComponent
-import com.spravochnic.scbguide.uikit.request.content.error.ErrorContent
-import com.spravochnic.scbguide.uikit.request.content.progress.LoadingContent
 
 @Composable
 fun RequestContent(
-    component: RequestComponent,
+    state: RequestComponent.State,
     modifier: Modifier = Modifier,
 ) {
-    val stateValue by component.stateValue.subscribeAsState()
-
     Box(
         modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
-        when (val state = stateValue) {
+        when (state) {
             is RequestComponent.State.Loading -> {
                 LoadingContent(
                     modifier = Modifier.align(Alignment.Center),
@@ -35,7 +27,6 @@ fun RequestContent(
             is RequestComponent.State.Error -> {
                 ErrorContent(
                     modifier = Modifier.align(Alignment.Center),
-                    reloadButtonItemComponent = component.buttonReloadValue,
                     requestState = state
                 )
             }
@@ -50,6 +41,12 @@ fun RequestContent(
 private fun PreviewRequestContent() {
     RequestContent(
         modifier = Modifier.fillMaxSize(),
-        component = PreviewRequestComponent()
+        state = RequestComponent.State.Error(
+            message = "Error",
+            buttonReloadMessage = "Update?",
+            onReloadClick = {
+
+            }
+        )
     )
 }

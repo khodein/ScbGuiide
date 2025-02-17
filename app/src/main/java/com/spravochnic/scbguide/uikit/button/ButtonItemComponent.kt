@@ -1,16 +1,13 @@
-package com.spravochnic.scbguide.uikit.button.component
+package com.spravochnic.scbguide.uikit.button
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.arkivanov.decompose.value.Value
 import com.spravochnic.scbguide.uikit.theme.color.Primary
 import com.spravochnic.scbguide.uikit.theme.color.Secondary
 import com.spravochnic.scbguide.uikit.theme.color.TextPrimaryInverse
 
 interface ButtonItemComponent {
-
-    val stateValue: Value<State>
 
     data class State(
         val id: String,
@@ -18,8 +15,6 @@ interface ButtonItemComponent {
         val fill: Fill,
         val onClick: (() -> Unit)? = null,
     )
-
-    fun update(state: State)
 
     sealed class Fill(
         open val background: Color,

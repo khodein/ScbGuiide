@@ -5,7 +5,7 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 import com.spravochnic.scbguide.root.navigator.factory.ChildComponent
-import com.spravochnic.scbguide.rootcatalog.component.PreviewRootCatalogComponent
+import com.spravochnic.scbguide.rootcatalog.PreviewRootCatalogComponent
 import com.spravochnic.scbguide.utils.preview.PreviewComponentContext
 
 class PreviewRootComponent :

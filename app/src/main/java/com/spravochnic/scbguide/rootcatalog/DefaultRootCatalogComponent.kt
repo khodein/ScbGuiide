@@ -1,4 +1,4 @@
-package com.spravochnic.scbguide.rootcatalog.component
+package com.spravochnic.scbguide.rootcatalog
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.value.Value
@@ -9,7 +9,7 @@ import com.spravochnic.scbguide.root.repository.RootRepository
 import com.spravochnic.scbguide.rootcatalog.delegate.DefaultRootCatalogDelegate
 import com.spravochnic.scbguide.rootcatalog.mapper.RootCatalogComponentMapperImpl
 import com.spravochnic.scbguide.rootcatalog.repository.RootCatalogRepository
-import com.spravochnic.scbguide.uikit.request.component.DefaultRequestComponent
+import com.spravochnic.scbguide.uikit.request.RequestComponent
 import com.spravochnic.scbguide.utils.resmanager.ResManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -30,9 +30,7 @@ class DefaultRootCatalogComponent(
         stateKeeper.consume(
             key = RETAINED_SAVED_INSTANCE_ROOT_CATALOG_DELEGATE,
             strategy = RootCatalogComponent.State.serializer()
-        ) ?: RootCatalogComponent.State.Request(
-            DefaultRequestComponent(componentContext = componentContext)
-        )
+        ) ?: RootCatalogComponent.State.Request(RequestComponent.State.Loading())
     }
 
     private val rootCatalogDelegate = retainedInstance {
@@ -40,14 +38,9 @@ class DefaultRootCatalogComponent(
             initialState = initialState,
             scope = componentScope,
             rootCatalogRepository = rootCatalogRepository,
-
-            rootCatalogComponentMapper = RootCatalogComponentMapperImpl(
-                resManager = resManager,
-            ),
-            resManager = resManager,
+            rootCatalogComponentMapper = RootCatalogComponentMapperImpl(resManager = resManager),
             rootRepository = rootRepository,
             rootNavigator = rootNavigator,
-            componentContext = componentContext,
         )
     }
 

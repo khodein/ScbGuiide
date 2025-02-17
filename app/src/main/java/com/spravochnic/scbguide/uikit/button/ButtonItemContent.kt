@@ -1,4 +1,4 @@
-package com.spravochnic.scbguide.uikit.button.content
+package com.spravochnic.scbguide.uikit.button
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,22 +9,16 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.arkivanov.decompose.extensions.compose.subscribeAsState
-import com.spravochnic.scbguide.uikit.button.component.ButtonItemComponent
-import com.spravochnic.scbguide.uikit.button.component.PreviewButtonItemComponent
 import com.spravochnic.scbguide.uikit.theme.style.Bold_16
 
 @Composable
 fun ButtonItemContent(
-    component: ButtonItemComponent,
+    state: ButtonItemComponent.State,
     modifier: Modifier = Modifier,
 ) {
-    val state by component.stateValue.subscribeAsState()
-
     val fill = state.fill
     val border = when (fill) {
         is ButtonItemComponent.Fill.Outline -> BorderStroke(
@@ -58,6 +52,10 @@ fun ButtonItemContent(
 @Composable
 fun PreviewButtonItemContent() {
     ButtonItemContent(
-        PreviewButtonItemComponent()
+        ButtonItemComponent.State(
+            id = "button,",
+            text = "text",
+            fill = ButtonItemComponent.Fill.Filled()
+        )
     )
 }
