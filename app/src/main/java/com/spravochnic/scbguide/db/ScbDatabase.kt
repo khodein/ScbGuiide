@@ -4,12 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.spravochnic.scbguide.catalog.db.CatalogDao
-import com.spravochnic.scbguide.catalog.db.CatalogEntity
-import com.spravochnic.scbguide.root.db.status.StatusDao
-import com.spravochnic.scbguide.root.db.status.StatusEntity
-import com.spravochnic.scbguide.rootcatalog.db.RootCatalogDao
-import com.spravochnic.scbguide.rootcatalog.db.RootCatalogEntity
+import com.spravochnic.scbguide.catalog.api.db.CatalogDao
+import com.spravochnic.scbguide.catalog.api.db.CatalogEntity
+import com.spravochnic.scbguide.root.api.db.status.StatusDao
+import com.spravochnic.scbguide.root.api.db.status.StatusEntity
+import com.spravochnic.scbguide.rootcatalog.api.db.RootCatalogDao
+import com.spravochnic.scbguide.rootcatalog.api.db.RootCatalogEntity
 import com.spravochnic.scbguide.utils.Constants
 
 @Database(

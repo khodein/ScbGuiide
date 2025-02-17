@@ -14,16 +14,16 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.core.view.WindowInsetsControllerCompat
 import com.arkivanov.decompose.defaultComponentContext
-import com.spravochnic.scbguide.catalog.navigator.CatalogNavigator
-import com.spravochnic.scbguide.catalog.navigator.CatalogNavigatorImpl
+import com.spravochnic.scbguide.catalog.api.navigator.CatalogNavigator
+import com.spravochnic.scbguide.catalog.internal.navigator.CatalogNavigatorImpl
 import com.spravochnic.scbguide.db.ScbDatabase
-import com.spravochnic.scbguide.root.DefaultRootComponent
-import com.spravochnic.scbguide.root.content.RootContent
-import com.spravochnic.scbguide.root.navigator.RootNavigator
-import com.spravochnic.scbguide.root.navigator.RootNavigatorImpl
-import com.spravochnic.scbguide.root.navigator.factory.RootComponentFactory
-import com.spravochnic.scbguide.rootcatalog.navigator.RootCatalogNavigator
-import com.spravochnic.scbguide.rootcatalog.navigator.RootCatalogNavigatorImpl
+import com.spravochnic.scbguide.root.api.config.RootNavigator
+import com.spravochnic.scbguide.root.internal.component.DefaultRootComponent
+import com.spravochnic.scbguide.root.internal.content.RootContent
+import com.spravochnic.scbguide.root.internal.navigator.RootNavigatorImpl
+import com.spravochnic.scbguide.root.internal.navigator.factory.RootComponentFactory
+import com.spravochnic.scbguide.rootcatalog.api.navigator.RootCatalogNavigator
+import com.spravochnic.scbguide.rootcatalog.internal.navigator.RootCatalogNavigatorImpl
 import com.spravochnic.scbguide.uikit.theme.ScbGuiideTheme
 import com.spravochnic.scbguide.utils.resmanager.ResManagerImpl
 
