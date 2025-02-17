@@ -5,20 +5,24 @@ import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.popTo
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.decompose.router.stack.replaceCurrent
-import com.spravochnic.scbguide.home.navigator.HomeNavigator
+import com.spravochnic.scbguide.catalog.navigator.CatalogNavigator
+import com.spravochnic.scbguide.rootcatalog.navigator.RootCatalogNavigator
 import java.lang.ref.WeakReference
 
 class RootNavigatorImpl(
-    homeNavigator: HomeNavigator,
+    rootCatalogNavigator: RootCatalogNavigator,
+    catalogNavigator: CatalogNavigator,
 ) : RootNavigator,
-    HomeNavigator by homeNavigator {
+    RootCatalogNavigator by rootCatalogNavigator,
+    CatalogNavigator by catalogNavigator {
 
     private var weakReferenceStackNavigation: WeakReference<StackNavigation<RootConfig>>? = null
     private val stackNavigation: StackNavigation<RootConfig>?
         get() = weakReferenceStackNavigation?.get()
 
     init {
-        homeNavigator.init(this)
+        rootCatalogNavigator.init(this)
+        catalogNavigator.init(this)
     }
 
     override fun init(stackNavigation: StackNavigation<RootConfig>) {

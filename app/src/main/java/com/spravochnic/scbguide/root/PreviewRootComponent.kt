@@ -4,8 +4,8 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
-import com.spravochnic.scbguide.home.PreviewHomeComponent
 import com.spravochnic.scbguide.root.navigator.factory.ChildComponent
+import com.spravochnic.scbguide.rootcatalog.component.PreviewRootCatalogComponent
 import com.spravochnic.scbguide.utils.preview.PreviewComponentContext
 
 class PreviewRootComponent :
@@ -16,7 +16,7 @@ class PreviewRootComponent :
         MutableValue(
             ChildStack(
                 configuration = Unit,
-                instance = ChildComponent.HomeChild(PreviewHomeComponent()),
+                instance = ChildComponent.RootCatalogChild(PreviewRootCatalogComponent()),
             )
         )
 

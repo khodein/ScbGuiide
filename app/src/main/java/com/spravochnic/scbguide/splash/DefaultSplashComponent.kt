@@ -23,6 +23,6 @@ class DefaultSplashComponent(
     override val state: Value<SplashComponent.State> = _state
 
     override fun onFinish() {
-        rootNavigator.replaceToHome()
+        rootNavigator.replaceToRootCatalog()
     }
 }

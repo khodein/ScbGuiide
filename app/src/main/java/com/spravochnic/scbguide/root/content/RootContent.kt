@@ -14,10 +14,11 @@ import com.arkivanov.decompose.extensions.compose.stack.animation.plus
 import com.arkivanov.decompose.extensions.compose.stack.animation.predictiveback.predictiveBackAnimation
 import com.arkivanov.decompose.extensions.compose.stack.animation.scale
 import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
-import com.spravochnic.scbguide.home.content.HomeContent
+import com.spravochnic.scbguide.catalog.content.CatalogContent
 import com.spravochnic.scbguide.root.PreviewRootComponent
 import com.spravochnic.scbguide.root.RootComponent
 import com.spravochnic.scbguide.root.navigator.factory.ChildComponent
+import com.spravochnic.scbguide.rootcatalog.content.RootCatalogContent
 import com.spravochnic.scbguide.splash.content.SplashContent
 import com.spravochnic.scbguide.uikit.theme.ScbGuiideTheme
 
@@ -51,7 +52,7 @@ private fun Children(component: RootComponent, modifier: Modifier = Modifier) {
             color = MaterialTheme.colorScheme.background
         ) {
             when(val child = children.instance) {
-                is ChildComponent.HomeChild -> HomeContent(
+                is ChildComponent.RootCatalogChild -> RootCatalogContent(
                     component = child.component,
                     modifier = Modifier
                         .fillMaxSize()
@@ -63,9 +64,12 @@ private fun Children(component: RootComponent, modifier: Modifier = Modifier) {
                     modifier = Modifier.fillMaxSize()
                 )
 
-                else -> {
-
-                }
+                is ChildComponent.CatalogChild -> CatalogContent(
+                    component = child.component,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .systemBarsPadding()
+                )
             }
         }
     }

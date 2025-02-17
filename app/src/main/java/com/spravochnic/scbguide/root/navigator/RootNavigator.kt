@@ -1,10 +1,12 @@
 package com.spravochnic.scbguide.root.navigator
 
 import com.arkivanov.decompose.router.stack.StackNavigation
-import com.spravochnic.scbguide.home.navigator.HomeNavigator
+import com.spravochnic.scbguide.catalog.navigator.CatalogNavigator
+import com.spravochnic.scbguide.rootcatalog.navigator.RootCatalogNavigator
 
 interface RootNavigator :
-    HomeNavigator {
+    RootCatalogNavigator,
+    CatalogNavigator {
 
     fun init(stackNavigation: StackNavigation<RootConfig>)
 

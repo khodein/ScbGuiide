@@ -6,13 +6,10 @@ import kotlinx.serialization.Serializable
 sealed interface RootConfig {
 
     @Serializable
-    data object Test : RootConfig
+    data object Catalog : RootConfig
 
     @Serializable
-    data object Lectory : RootConfig
-
-    @Serializable
-    data object Home : RootConfig
+    data object RootCatalog : RootConfig
 
     @Serializable
     data object Splash : RootConfig

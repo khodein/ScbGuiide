@@ -25,10 +25,6 @@ fun ButtonItemContent(
 ) {
     val state by component.stateValue.subscribeAsState()
 
-    if (state.text.isEmpty()) {
-        return
-    }
-
     val fill = state.fill
     val border = when (fill) {
         is ButtonItemComponent.Fill.Outline -> BorderStroke(

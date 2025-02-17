@@ -25,16 +25,17 @@ fun RequestContent(
         contentAlignment = Alignment.Center
     ) {
         when (val state = stateValue) {
-            is RequestComponent.State.Loading -> LoadingContent(
-                modifier = Modifier.align(Alignment.Center),
-                requestState = state
-            )
+            is RequestComponent.State.Loading -> {
+                LoadingContent(
+                    modifier = Modifier.align(Alignment.Center),
+                    requestState = state
+                )
+            }
 
             is RequestComponent.State.Error -> {
-                val reloadButtonItemComponent by component.buttonReloadValue.subscribeAsState()
                 ErrorContent(
                     modifier = Modifier.align(Alignment.Center),
-                    reloadButtonItemComponent = reloadButtonItemComponent,
+                    reloadButtonItemComponent = component.buttonReloadValue,
                     requestState = state
                 )
             }
