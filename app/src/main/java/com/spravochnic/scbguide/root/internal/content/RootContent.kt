@@ -16,7 +16,7 @@ import com.arkivanov.decompose.extensions.compose.stack.animation.scale
 import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 import com.spravochnic.scbguide.catalog.internal.content.CatalogContent
 import com.spravochnic.scbguide.root.api.component.RootComponent
-import com.spravochnic.scbguide.root.internal.navigator.factory.ChildComponent
+import com.spravochnic.scbguide.root.internal.builder.ChildComponent
 import com.spravochnic.scbguide.root.internal.preview.PreviewRootComponent
 import com.spravochnic.scbguide.rootcatalog.internal.content.RootCatalogContent
 import com.spravochnic.scbguide.splash.internal.content.SplashContent

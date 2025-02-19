@@ -14,17 +14,30 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.core.view.WindowInsetsControllerCompat
 import com.arkivanov.decompose.defaultComponentContext
+import com.spravochnic.scbguide.catalog.api.db.CatalogDao
+import com.spravochnic.scbguide.catalog.api.factory.CatalogFactory
 import com.spravochnic.scbguide.catalog.api.navigator.CatalogNavigator
+import com.spravochnic.scbguide.catalog.internal.factory.CatalogFactoryImpl
 import com.spravochnic.scbguide.catalog.internal.navigator.CatalogNavigatorImpl
+import com.spravochnic.scbguide.catalog.internal.repository.CatalogRepositoryImpl
 import com.spravochnic.scbguide.db.ScbDatabase
+import com.spravochnic.scbguide.quest.api.db.catalog.QuestCatalogDao
+import com.spravochnic.scbguide.quest.internal.repository.QuestCatalogRepositoryImpl
 import com.spravochnic.scbguide.root.api.config.RootNavigator
+import com.spravochnic.scbguide.root.api.db.status.StatusDao
+import com.spravochnic.scbguide.root.internal.builder.RootComponentBuilder
 import com.spravochnic.scbguide.root.internal.component.DefaultRootComponent
 import com.spravochnic.scbguide.root.internal.content.RootContent
 import com.spravochnic.scbguide.root.internal.navigator.RootNavigatorImpl
-import com.spravochnic.scbguide.root.internal.navigator.factory.RootComponentFactory
+import com.spravochnic.scbguide.rootcatalog.api.db.RootCatalogDao
+import com.spravochnic.scbguide.rootcatalog.api.factory.RootCatalogFactory
 import com.spravochnic.scbguide.rootcatalog.api.navigator.RootCatalogNavigator
+import com.spravochnic.scbguide.rootcatalog.internal.factory.RootCatalogFactoryImpl
 import com.spravochnic.scbguide.rootcatalog.internal.navigator.RootCatalogNavigatorImpl
+import com.spravochnic.scbguide.splash.api.factory.SplashFactory
+import com.spravochnic.scbguide.splash.internal.factory.SplashFactoryImpl
 import com.spravochnic.scbguide.uikit.theme.ScbGuiideTheme
+import com.spravochnic.scbguide.utils.resmanager.ResManager
 import com.spravochnic.scbguide.utils.resmanager.ResManagerImpl
 
 
@@ -36,7 +49,7 @@ class MainActivity : ComponentActivity() {
 
         enableEdgeToEdge(statusBarStyle = SystemBarStyle.dark(Color.TRANSPARENT))
 
-        val resManager = ResManagerImpl(context = this)
+        val resManager: ResManager = ResManagerImpl(context = this)
 
         val rootCatalogNavigator: RootCatalogNavigator = RootCatalogNavigatorImpl()
         val catalogNavigator: CatalogNavigator = CatalogNavigatorImpl()
@@ -46,16 +59,15 @@ class MainActivity : ComponentActivity() {
             catalogNavigator = catalogNavigator
         )
 
-        val rootComponentFactory = RootComponentFactory(
+        val rootComponentBuilder = getBuilder(
             rootNavigator = rootNavigator,
             resManager = resManager,
-            scbDatabase = ScbDatabase.getInstance(this)
         )
 
         val rootComponent =
             DefaultRootComponent(
                 rootNavigator = rootNavigator,
-                rootComponentFactory = rootComponentFactory,
+                rootComponentBuilder = rootComponentBuilder,
                 componentContext = defaultComponentContext(),
             )
 
@@ -97,5 +109,90 @@ class MainActivity : ComponentActivity() {
                 window.statusBarColor = Color.TRANSPARENT
             }
         }
+    }
+
+    private fun getBuilder(
+        rootNavigator: RootNavigator,
+        resManager: ResManager,
+    ): RootComponentBuilder {
+
+        val db = ScbDatabase.getInstance(this)
+        val statusDao = db.statusDao()
+        val catalogDao = db.catalogDao()
+        val rootCatalogDao = db.rootCatalogDao()
+        val questCatalogDao = db.questCatalogDao()
+
+        val splashFactory = getSplashFactory(
+            rootNavigator = rootNavigator
+        )
+
+        val rootCatalogFactory = getRootCatalogFactory(
+            rootNavigator = rootNavigator,
+            resManager = resManager,
+            statusDao = statusDao,
+            catalogDao = catalogDao,
+            rootCatalogDao = rootCatalogDao,
+        )
+
+        val catalogFactory = getCatalogFactory(
+            resManager = resManager,
+            rootNavigator = rootNavigator,
+            catalogDao = catalogDao,
+            questCatalogDao = questCatalogDao,
+        )
+
+
+        return RootComponentBuilder(
+            rootCatalogFactory = rootCatalogFactory,
+            catalogFactory = catalogFactory,
+            splashFactory = splashFactory,
+        )
+    }
+
+    private fun getRootCatalogFactory(
+        statusDao: StatusDao,
+        catalogDao: CatalogDao,
+        rootNavigator: RootNavigator,
+        rootCatalogDao: RootCatalogDao,
+        resManager: ResManager,
+    ): RootCatalogFactory {
+        val factory: RootCatalogFactory = RootCatalogFactoryImpl(
+            statusDao = statusDao,
+            catalogDao = catalogDao,
+            rootNavigator = rootNavigator,
+            rootCatalogDao = rootCatalogDao,
+            resManager = resManager
+        )
+        return factory
+    }
+
+    private fun getCatalogFactory(
+        resManager: ResManager,
+        rootNavigator: RootNavigator,
+        catalogDao: CatalogDao,
+        questCatalogDao: QuestCatalogDao,
+    ): CatalogFactory {
+        val factory: CatalogFactory = CatalogFactoryImpl(
+            resManager = resManager,
+            rootNavigator = rootNavigator,
+            catalogRepository = CatalogRepositoryImpl(
+                catalogDao = catalogDao
+            ),
+            questCatalogRepository = QuestCatalogRepositoryImpl(
+                questCatalogDao = questCatalogDao,
+            )
+        )
+
+        return factory
+    }
+
+    private fun getSplashFactory(
+        rootNavigator: RootNavigator
+    ): SplashFactory {
+        val splashFactory: SplashFactory = SplashFactoryImpl(
+            rootNavigator = rootNavigator,
+        )
+
+        return splashFactory
     }
 }

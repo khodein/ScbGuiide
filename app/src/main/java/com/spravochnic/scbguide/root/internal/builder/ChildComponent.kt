@@ -1,4 +1,4 @@
-package com.spravochnic.scbguide.root.internal.navigator.factory
+package com.spravochnic.scbguide.root.internal.builder
 
 import com.spravochnic.scbguide.catalog.api.component.CatalogComponent
 import com.spravochnic.scbguide.rootcatalog.api.component.RootCatalogComponent

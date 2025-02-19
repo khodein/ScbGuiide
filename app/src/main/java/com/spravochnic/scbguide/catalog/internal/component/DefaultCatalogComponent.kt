@@ -8,6 +8,7 @@ import com.spravochnic.scbguide.catalog.api.component.CatalogComponent
 import com.spravochnic.scbguide.catalog.api.repository.CatalogRepository
 import com.spravochnic.scbguide.catalog.internal.handler.CatalogHandler
 import com.spravochnic.scbguide.catalog.internal.mapper.CatalogStateMapperImpl
+import com.spravochnic.scbguide.quest.api.repostiory.QuestCatalogRepository
 import com.spravochnic.scbguide.root.api.config.RootNavigator
 import com.spravochnic.scbguide.rootcatalog.api.model.RootCatalogTypeModel
 import com.spravochnic.scbguide.uikit.request.RequestComponent
@@ -19,6 +20,7 @@ import kotlinx.coroutines.SupervisorJob
 class DefaultCatalogComponent(
     rootCatalogAlias: String,
     catalogRepository: CatalogRepository,
+    questCatalogRepository: QuestCatalogRepository,
     rootNavigator: RootNavigator,
     resManager: ResManager,
     componentContext: ComponentContext,
@@ -46,6 +48,7 @@ class DefaultCatalogComponent(
             catalogRepository = catalogRepository,
             rootNavigator = rootNavigator,
             catalogStateMapper = CatalogStateMapperImpl(resManager),
+            questCatalogRepository = questCatalogRepository,
             initialState = initialState,
         )
     }

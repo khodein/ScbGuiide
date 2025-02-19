@@ -50,7 +50,7 @@ class RootCatalogStateMapperImpl(
                         res = leadingResId,
                         tint = Note
                     ),
-                    trailing = NavItemComponent.State.Trailing.Arrow(),
+                    trailing = NavItemComponent.State.Trailing.Arrow(tint = Note),
                     onClick = onClick
                 )
             )

@@ -2,15 +2,10 @@ package com.spravochnic.scbguide.uikit.navitem
 
 import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.Color
-import com.arkivanov.decompose.value.Value
 import com.spravochnic.scbguide.R
 import com.spravochnic.scbguide.uikit.theme.color.Note
 
 interface NavItemComponent {
-
-    val stateValue: Value<State>
-
-    fun update(state: State)
 
     data class State(
         val id: String,
@@ -23,7 +18,7 @@ interface NavItemComponent {
     ) {
         data class Leading(
             @DrawableRes val res: Int,
-            val tint: Color,
+            val tint: Color? = null,
         )
 
         sealed interface Trailing {

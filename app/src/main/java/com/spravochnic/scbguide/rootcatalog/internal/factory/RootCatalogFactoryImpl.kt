@@ -16,12 +16,13 @@ class RootCatalogFactoryImpl(
     private val statusDao: StatusDao,
     private val rootNavigator: RootNavigator,
     private val catalogDao: CatalogDao,
-    private val componentContext: ComponentContext,
     private val rootCatalogDao: RootCatalogDao,
     private val resManager: ResManager,
 ) : RootCatalogFactory {
 
-    override fun get(): RootCatalogComponent {
+    override fun get(
+        componentContext: ComponentContext,
+    ): RootCatalogComponent {
         return DefaultRootCatalogComponent(
             componentContext = componentContext,
             rootCatalogRepository = RootCatalogRepositoryImpl(

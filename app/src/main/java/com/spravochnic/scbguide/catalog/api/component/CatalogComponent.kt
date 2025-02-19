@@ -2,6 +2,7 @@ package com.spravochnic.scbguide.catalog.api.component
 
 import com.arkivanov.decompose.value.Value
 import com.spravochnic.scbguide.rootcatalog.api.model.RootCatalogTypeModel
+import com.spravochnic.scbguide.uikit.navitem.NavItemComponent
 import com.spravochnic.scbguide.uikit.request.RequestComponent
 import com.spravochnic.scbguide.uikit.toolbar.ToolbarComponent
 import kotlinx.serialization.Serializable
@@ -23,10 +24,10 @@ interface CatalogComponent {
         data class Request(val state: RequestComponent.State) : State()
 
         @Serializable
-        data class Success(val list: List<Child>) : State()
+        data class Success(val child: Child) : State()
     }
 
     sealed interface Child {
-
+        data class NavItemChild(val items: List<NavItemComponent.State>) : Child
     }
 }

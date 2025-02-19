@@ -47,7 +47,7 @@ fun NavItemContent(
             Image(
                 modifier = Modifier.size(48.dp),
                 contentDescription = "NavItem.Leading.Icon",
-                colorFilter = ColorFilter.tint(leading.tint),
+                colorFilter = leading.tint?.let(ColorFilter::tint),
                 painter = painterResource(leading.res),
             )
         }
@@ -71,6 +71,7 @@ fun NavItemContent(
 
             state.subText?.let { subText ->
                 Text(
+                    modifier = Modifier.padding(top = 4.dp),
                     text = subText,
                     style = Regular_13,
                     color = TextTertiary,

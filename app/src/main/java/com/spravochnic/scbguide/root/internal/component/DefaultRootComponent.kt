@@ -8,13 +8,13 @@ import com.arkivanov.decompose.value.Value
 import com.spravochnic.scbguide.root.api.component.RootComponent
 import com.spravochnic.scbguide.root.api.config.RootConfig
 import com.spravochnic.scbguide.root.api.config.RootNavigator
-import com.spravochnic.scbguide.root.internal.navigator.factory.ChildComponent
-import com.spravochnic.scbguide.root.internal.navigator.factory.RootComponentFactory
+import com.spravochnic.scbguide.root.internal.builder.ChildComponent
+import com.spravochnic.scbguide.root.internal.builder.RootComponentBuilder
 
 class DefaultRootComponent(
     private val rootNavigator: RootNavigator,
     componentContext: ComponentContext,
-    rootComponentFactory: RootComponentFactory,
+    rootComponentBuilder: RootComponentBuilder,
 ) : RootComponent, ComponentContext by componentContext {
 
     private val stackNavigator = StackNavigation<RootConfig>()
@@ -28,7 +28,7 @@ class DefaultRootComponent(
             source = stackNavigator,
             serializer = RootConfig.serializer(),
             initialStack = ::getInitialStack,
-            childFactory = rootComponentFactory::get,
+            childFactory = rootComponentBuilder::get,
         )
 
     override val stack: Value<ChildStack<*, ChildComponent>> = _stack
