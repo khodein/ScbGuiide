@@ -11,7 +11,6 @@ import com.spravochnic.scbguide.quest.api.repostiory.QuestCatalogRepository
 import com.spravochnic.scbguide.root.api.config.RootNavigator
 import com.spravochnic.scbguide.rootcatalog.api.model.RootCatalogTypeModel
 import com.spravochnic.scbguide.uikit.request.RequestComponent
-import com.spravochnic.scbguide.uikit.toolbar.ToolbarComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -26,8 +25,12 @@ class CatalogHandler(
     initialState: CatalogComponent.State,
 ) : InstanceKeeper.Instance {
 
-    val toolbarValue: MutableValue<ToolbarComponent.State> = MutableValue(
-        catalogStateMapper.mapToolbarState(rootNavigator::pop)
+    val toolbarValue: MutableValue<CatalogComponent.ToolbarChild> = MutableValue(
+        if (rootCatalogTypeModel == RootCatalogTypeModel.LECTORY) {
+            catalogStateMapper.mapToolbarCatalog(rootNavigator::pop)
+        } else {
+            catalogStateMapper.mapToolbarQuestCatalog(rootNavigator::pop)
+        }
     )
 
     val stateValue: MutableValue<CatalogComponent.State> = MutableValue(initialState)

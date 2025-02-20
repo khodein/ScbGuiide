@@ -1,7 +1,7 @@
 package com.spravochnic.scbguide.catalog.api.component
 
+import androidx.annotation.DrawableRes
 import com.arkivanov.decompose.value.Value
-import com.spravochnic.scbguide.rootcatalog.api.model.RootCatalogTypeModel
 import com.spravochnic.scbguide.uikit.navitem.NavItemComponent
 import com.spravochnic.scbguide.uikit.request.RequestComponent
 import com.spravochnic.scbguide.uikit.toolbar.ToolbarComponent
@@ -9,11 +9,9 @@ import kotlinx.serialization.Serializable
 
 interface CatalogComponent {
 
-    val rootCatalogTypeModel: RootCatalogTypeModel
-
     val initialState: State
 
-    val toolbarStateValue: Value<ToolbarComponent.State>
+    val toolbarStateValue: Value<ToolbarChild>
 
     val stateValue: Value<State>
 
@@ -26,6 +24,11 @@ interface CatalogComponent {
         @Serializable
         data class Success(val child: Child) : State()
     }
+
+    data class ToolbarChild(
+        val toolbarState: ToolbarComponent.State,
+        @DrawableRes val imageRes: Int
+    )
 
     sealed interface Child {
         data class NavItemChild(val items: List<NavItemComponent.State>) : Child

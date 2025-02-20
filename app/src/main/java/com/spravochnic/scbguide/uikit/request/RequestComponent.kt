@@ -24,7 +24,7 @@ interface RequestComponent {
 
         data class Error(
             val errorImageSize: Dp = 70.dp,
-            @DrawableRes val errorRes: Int = R.drawable.ic_error,
+            @DrawableRes val errorRes: Int = R.drawable.art_error,
             val messageColor: Color = Note,
             val message: String,
             val buttonReloadMessage: String? = null,

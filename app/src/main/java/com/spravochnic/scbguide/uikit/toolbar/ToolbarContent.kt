@@ -9,9 +9,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,14 +22,13 @@ import com.spravochnic.scbguide.uikit.theme.style.Bold_16
 @Composable
 fun ToolbarContent(
     modifier: Modifier,
-    colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(),
     state: ToolbarComponent.State,
-    scrollBehavior: TopAppBarScrollBehavior? = null,
 ) {
     TopAppBar(
         modifier = modifier,
-        colors = colors,
-        scrollBehavior = scrollBehavior,
+        colors = TopAppBarDefaults.topAppBarColors().copy(
+            containerColor = state.background
+        ),
         navigationIcon = {
             when (val leading = state.leading) {
                 is ToolbarComponent.Leading.Arrow -> {

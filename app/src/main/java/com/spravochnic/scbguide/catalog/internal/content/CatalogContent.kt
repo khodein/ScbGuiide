@@ -15,9 +15,7 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -26,14 +24,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.times
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
-import com.spravochnic.scbguide.R
 import com.spravochnic.scbguide.catalog.api.component.CatalogComponent
 import com.spravochnic.scbguide.catalog.internal.preview.PreviewCatalogComponent
 import com.spravochnic.scbguide.uikit.navitem.NavItemContent
@@ -41,7 +37,6 @@ import com.spravochnic.scbguide.uikit.request.RequestContent
 import com.spravochnic.scbguide.uikit.theme.color.Tertiary
 import com.spravochnic.scbguide.uikit.toolbar.ToolbarContent
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CatalogContent(
     component: CatalogComponent,
@@ -66,7 +61,6 @@ fun CatalogContent(
             imageState.value = ImageCollapseState.EXPANDED
         }
     }
-
 
     val animatedHeight by animateDpAsState(
         targetValue = (200.dp - (scrollProgress * 200.dp)),
@@ -94,10 +88,7 @@ fun CatalogContent(
                 ToolbarContent(
                     modifier = Modifier
                         .fillMaxWidth(),
-                    state = toolbarStateValue,
-                    colors = TopAppBarDefaults.topAppBarColors().copy(
-                        containerColor = Color.Transparent
-                    )
+                    state = toolbarStateValue.toolbarState,
                 )
                 Image(
                     modifier = Modifier
@@ -107,7 +98,7 @@ fun CatalogContent(
                             scaleY = animatedScaleY
                             alpha = animatedAlpha
                         },
-                    painter = painterResource(R.drawable.art_top_lectory),
+                    painter = painterResource(toolbarStateValue.imageRes),
                     contentDescription = "Catalog.Image.Art"
                 )
             }

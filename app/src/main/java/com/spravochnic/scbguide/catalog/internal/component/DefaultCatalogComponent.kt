@@ -12,7 +12,6 @@ import com.spravochnic.scbguide.quest.api.repostiory.QuestCatalogRepository
 import com.spravochnic.scbguide.root.api.config.RootNavigator
 import com.spravochnic.scbguide.rootcatalog.api.model.RootCatalogTypeModel
 import com.spravochnic.scbguide.uikit.request.RequestComponent
-import com.spravochnic.scbguide.uikit.toolbar.ToolbarComponent
 import com.spravochnic.scbguide.utils.resmanager.ResManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -28,7 +27,7 @@ class DefaultCatalogComponent(
 
     private val componentScope by lazy { coroutineScope(Dispatchers.Main + SupervisorJob()) }
 
-    override val rootCatalogTypeModel: RootCatalogTypeModel by lazy {
+    private val rootCatalogTypeModel: RootCatalogTypeModel by lazy {
         RootCatalogTypeModel.entries.find { it.alias == rootCatalogAlias }
             ?: RootCatalogTypeModel.LECTORY
     }
@@ -38,7 +37,7 @@ class DefaultCatalogComponent(
         strategy = CatalogComponent.State.serializer()
     ) ?: CatalogComponent.State.Request(RequestComponent.State.Loading())
 
-    override val toolbarStateValue: Value<ToolbarComponent.State> by lazy { catalogHandler.toolbarValue }
+    override val toolbarStateValue: Value<CatalogComponent.ToolbarChild> by lazy { catalogHandler.toolbarValue }
     override val stateValue: Value<CatalogComponent.State> by lazy { catalogHandler.stateValue }
 
     private val catalogHandler = retainedInstance {

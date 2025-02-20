@@ -3,7 +3,6 @@ package com.spravochnic.scbguide.uikit.request
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -35,6 +34,34 @@ fun ErrorContent(
             .wrapContentWidth(),
         verticalArrangement = Arrangement.Center,
     ) {
+
+        Column(
+            modifier = Modifier
+                .padding(horizontal = 60.dp)
+                .align(Alignment.CenterHorizontally)
+        ) {
+            Image(
+                modifier = Modifier
+                    .size(requestState.errorImageSize)
+                    .align(Alignment.CenterHorizontally),
+                painter = painterResource(requestState.errorRes),
+                alpha = 0.8f,
+                colorFilter = ColorFilter.colorMatrix(OrangeColorMatrix.get()),
+                contentDescription = "Error.Image"
+            )
+
+            Text(
+                modifier = Modifier
+                    .size(100.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .padding(start = 10.dp),
+                textAlign = TextAlign.Center,
+                text = requestState.message,
+                style = Bold_16,
+                color = requestState.messageColor
+            )
+        }
+
         if (!requestState.buttonReloadMessage.isNullOrEmpty() && requestState.onReloadClick != null) {
             ButtonItemContent(
                 modifier = Modifier
@@ -50,34 +77,6 @@ fun ErrorContent(
                         textColor = TextPrimaryInverse
                     )
                 )
-            )
-        }
-
-        Row(
-            modifier = Modifier
-                .padding(horizontal = 60.dp)
-                .align(Alignment.CenterHorizontally)
-        ) {
-            Image(
-                modifier = Modifier
-                    .size(requestState.errorImageSize)
-                    .align(Alignment.CenterVertically),
-                painter = painterResource(requestState.errorRes),
-                alpha = 0.8f,
-                colorFilter = ColorFilter.colorMatrix(OrangeColorMatrix.get()),
-                contentDescription = "Error.Image"
-            )
-
-            Text(
-                modifier = Modifier
-                    .wrapContentHeight()
-                    .wrapContentWidth()
-                    .align(Alignment.CenterVertically)
-                    .padding(start = 10.dp),
-                textAlign = TextAlign.Center,
-                text = requestState.message,
-                style = Bold_16,
-                color = requestState.messageColor
             )
         }
     }

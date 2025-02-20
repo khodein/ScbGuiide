@@ -55,12 +55,32 @@ class CatalogStateMapperImpl(
         return CatalogComponent.Child.NavItemChild(items)
     }
 
-    override fun mapToolbarState(onClickArrow: () -> Unit): ToolbarComponent.State {
-        return ToolbarComponent.State(
-            leading = ToolbarComponent.Leading.Arrow(
-                onClick = onClickArrow
+    override fun mapToolbarCatalog(
+        onClickArrow: () -> Unit
+    ): CatalogComponent.ToolbarChild {
+        return CatalogComponent.ToolbarChild(
+            toolbarState = ToolbarComponent.State(
+                leading = ToolbarComponent.Leading.Arrow(
+                    onClick = onClickArrow,
+                ),
+                background = Color.Transparent
             ),
-            background = Color.Transparent
+            imageRes = R.drawable.art_top_lectory
+
+        )
+    }
+
+    override fun mapToolbarQuestCatalog(
+        onClickArrow: () -> Unit
+    ): CatalogComponent.ToolbarChild {
+        return CatalogComponent.ToolbarChild(
+            toolbarState = ToolbarComponent.State(
+                leading = ToolbarComponent.Leading.Arrow(
+                    onClick = onClickArrow,
+                ),
+                background = Color.Transparent
+            ),
+            imageRes = R.drawable.art_top_quest
         )
     }
 }
