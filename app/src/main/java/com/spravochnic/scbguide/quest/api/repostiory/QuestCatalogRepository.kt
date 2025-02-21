@@ -1,7 +1,7 @@
 package com.spravochnic.scbguide.quest.api.repostiory
 
-import com.spravochnic.scbguide.quest.api.model.QuestCatalogModel
+import com.spravochnic.scbguide.quest.api.model.TopQuestCatalogModel
 
 interface QuestCatalogRepository {
-    suspend fun getQuestCatalog(): List<QuestCatalogModel>
+    suspend fun getTopCatalog(): List<TopQuestCatalogModel>
 }

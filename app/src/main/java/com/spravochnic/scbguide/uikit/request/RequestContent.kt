@@ -31,6 +31,13 @@ fun RequestContent(
                 )
             }
 
+            is RequestComponent.State.Empty -> {
+                EmptyContent(
+                    modifier = Modifier.align(Alignment.Center),
+                    requestState = state
+                )
+            }
+
             else -> Unit
         }
     }
@@ -41,7 +48,7 @@ fun RequestContent(
 private fun PreviewRequestContent() {
     RequestContent(
         modifier = Modifier.fillMaxSize(),
-        state = RequestComponent.State.Error(
+        state = RequestComponent.State.Empty(
             message = "Error",
             buttonReloadMessage = "Update?",
             onReloadClick = {

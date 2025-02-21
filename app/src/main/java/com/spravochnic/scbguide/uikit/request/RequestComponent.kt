@@ -23,11 +23,20 @@ interface RequestComponent {
         ) : State()
 
         data class Error(
-            val errorImageSize: Dp = 70.dp,
+            val errorImageSize: Dp = 150.dp,
             @DrawableRes val errorRes: Int = R.drawable.art_error,
             val messageColor: Color = Note,
             val message: String,
             val buttonReloadMessage: String? = null,
+            val onReloadClick: (() -> Unit)? = null
+        ) : State()
+
+        data class Empty(
+            val emptyImageSize: Dp = 150.dp,
+            val messageColor: Color = Secondary,
+            val message: String,
+            val buttonReloadMessage: String? = null,
+            @DrawableRes val emptyRes: Int = R.drawable.art_empty,
             val onReloadClick: (() -> Unit)? = null
         ) : State()
     }

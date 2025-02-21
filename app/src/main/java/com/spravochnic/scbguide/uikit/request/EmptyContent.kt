@@ -18,15 +18,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.spravochnic.scbguide.uikit.button.ButtonItemComponent
 import com.spravochnic.scbguide.uikit.button.ButtonItemContent
-import com.spravochnic.scbguide.uikit.theme.color.Note
+import com.spravochnic.scbguide.uikit.theme.color.Secondary
 import com.spravochnic.scbguide.uikit.theme.color.TextPrimaryInverse
 import com.spravochnic.scbguide.uikit.theme.style.Bold_16
 import com.spravochnic.scbguide.utils.colormatrix.CustomColorMatrix
 
 @Composable
-fun ErrorContent(
+fun EmptyContent(
     modifier: Modifier,
-    requestState: RequestComponent.State.Error,
+    requestState: RequestComponent.State.Empty,
 ) {
     Column(
         modifier = modifier
@@ -53,11 +53,11 @@ fun ErrorContent(
             Image(
                 modifier = Modifier
                     .padding(bottom = 20.dp)
-                    .size(requestState.errorImageSize)
+                    .size(requestState.emptyImageSize)
                     .align(Alignment.CenterHorizontally),
-                painter = painterResource(requestState.errorRes),
+                painter = painterResource(requestState.emptyRes),
                 alpha = 0.8f,
-                colorFilter = ColorFilter.colorMatrix(CustomColorMatrix.getOrangeMatrix()),
+                colorFilter = ColorFilter.colorMatrix(CustomColorMatrix.getBlueMatrix()),
                 contentDescription = "Error.Image"
             )
         }
@@ -72,7 +72,7 @@ fun ErrorContent(
                     text = requestState.buttonReloadMessage,
                     onClick = requestState.onReloadClick,
                     fill = ButtonItemComponent.Fill.Custom(
-                        background = Note,
+                        background = Secondary,
                         textColor = TextPrimaryInverse
                     )
                 )
