@@ -15,7 +15,7 @@ class RoomPlugin : BasePlugin() {
         target.applyDependencies(RoomListDep.invoke(libs))
     }
 
-    companion object {
-        const val ID = "room-config-plugin"
+    companion object : PluginID {
+        override val id: String = "room-config-plugin"
     }
 }

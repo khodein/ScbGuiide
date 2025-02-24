@@ -20,6 +20,18 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ScbGuiide"
+
 include(":app")
+
 include(":root-api")
+
 include(":utils")
+include(":uikit")
+
+include(":status-api", ":status-impl")
+
+include(":splash-api", ":splash-impl")
+
+include(":catalog-root-api", ":catalog-root-impl")
+
+include(":catalog-top-api", ":catalog-top-impl")

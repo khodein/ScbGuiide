@@ -35,4 +35,8 @@ abstract class BasePlugin : Plugin<Project> {
         val androidAppPlugin = this.findPlugin("kotlin-ksp").get()
         return androidAppPlugin.get().pluginId
     }
+
+    interface PluginID {
+        val id: String
+    }
 }

@@ -23,7 +23,7 @@ class SerializationPlugin : BasePlugin() {
         return androidAppPlugin.get().pluginId
     }
 
-    companion object {
-        const val ID = "serialization-config-plugin"
+    companion object : PluginID {
+        override val id: String = "serialization-config-plugin"
     }
 }

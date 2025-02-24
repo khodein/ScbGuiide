@@ -14,10 +14,9 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.core.view.WindowInsetsControllerCompat
 import com.arkivanov.decompose.defaultComponentContext
-import com.spravochnic.scbguide.main.root_impl.component.DefaultRootComponent
-import com.spravochnic.scbguide.main.root_impl.content.RootContent
-import com.spravochnic.scbguide.main.root_impl.module.MainModule
-import com.spravochnic.scbguide.uikit.theme.ScbGuiideTheme
+import com.spravochnic.scbguide.root_impl.component.DefaultRootComponent
+import com.spravochnic.scbguide.root_impl.content.RootContent
+import com.spravochnic.scbguide.main.module.MainModule
 
 
 class MainActivity : ComponentActivity() {
@@ -39,12 +38,10 @@ class MainActivity : ComponentActivity() {
                 setNavAndStatusBar()
             }
 
-            ScbGuiideTheme {
-                RootContent(
-                    component = rootComponent,
-                    modifier = Modifier.fillMaxSize()
-                )
-            }
+            RootContent(
+                component = rootComponent,
+                modifier = Modifier.fillMaxSize()
+            )
         }
     }
 

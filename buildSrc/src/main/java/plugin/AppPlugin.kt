@@ -20,10 +20,10 @@ class AppPlugin : BasePlugin() {
 
         target.plugins.apply(libs.getKotlinKsp())
 
-        target.plugins.apply(ComposePlugin.ID)
-        target.plugins.apply(SerializationPlugin.ID)
-        target.plugins.apply(DecomposePlugin.ID)
-        target.plugins.apply(RoomPlugin.ID)
+        target.plugins.apply(ComposePlugin.id)
+        target.plugins.apply(SerializationPlugin.id)
+        target.plugins.apply(DecomposePlugin.id)
+        target.plugins.apply(RoomPlugin.id)
 
         AppConfig.configure(target)
 
@@ -40,5 +40,9 @@ class AppPlugin : BasePlugin() {
     private fun VersionCatalog.getAndroidApplicationId(): String {
         val androidAppPlugin = this.findPlugin("android-application").get()
         return androidAppPlugin.get().pluginId
+    }
+
+    companion object : PluginID {
+        override val id: String = "app-config-plugin"
     }
 }

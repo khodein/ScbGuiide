@@ -17,7 +17,7 @@ class ComposePlugin : BasePlugin() {
         target.applyDependencies(ComposeDep.invoke(libs, target))
     }
 
-    companion object {
-        const val ID = "compose-config-plugin"
+    companion object : PluginID {
+        override val id: String = "compose-config-plugin"
     }
 }

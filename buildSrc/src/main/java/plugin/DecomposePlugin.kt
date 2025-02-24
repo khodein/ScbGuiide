@@ -15,7 +15,7 @@ class DecomposePlugin : BasePlugin() {
         target.applyDependencies(DecomposeListDep.invoke(libs))
     }
 
-    companion object {
-        const val ID = "decompose-config-plugin"
+    companion object : PluginID {
+        override val id: String = "decompose-config-plugin"
     }
 }

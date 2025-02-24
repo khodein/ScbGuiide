@@ -17,8 +17,8 @@ class LibPlugin : BaseFeaturePlugin() {
         target.plugins.apply(libs.getAndroidLibraryId())
         target.plugins.apply(libs.getKotlinAndroidId())
 
-        target.plugins.apply(SerializationPlugin.ID)
-        target.plugins.apply(ComposePlugin.ID)
+        target.plugins.apply(SerializationPlugin.id)
+        target.plugins.apply(ComposePlugin.id)
 
         AppConfig.configure(target)
 
@@ -26,10 +26,11 @@ class LibPlugin : BaseFeaturePlugin() {
             add(AndroidXCoreDep.invoke(libs))
             add(DecomposeDep.invoke(libs))
         }
+
         target.applyDependencies(dependencies)
     }
 
-    companion object {
-        const val ID = "lib-api-config-plugin"
+    companion object : PluginID {
+        override val id: String = "lib-api-config-plugin"
     }
 }

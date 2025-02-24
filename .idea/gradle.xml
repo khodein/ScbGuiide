@@ -23,7 +23,16 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/catalog-root-api" />
+            <option value="$PROJECT_DIR$/catalog-root-impl" />
+            <option value="$PROJECT_DIR$/catalog-top-api" />
+            <option value="$PROJECT_DIR$/catalog-top-impl" />
             <option value="$PROJECT_DIR$/root-api" />
+            <option value="$PROJECT_DIR$/splash-api" />
+            <option value="$PROJECT_DIR$/splash-impl" />
+            <option value="$PROJECT_DIR$/status-api" />
+            <option value="$PROJECT_DIR$/status-impl" />
+            <option value="$PROJECT_DIR$/uikit" />
             <option value="$PROJECT_DIR$/utils" />
           </set>
         </option>

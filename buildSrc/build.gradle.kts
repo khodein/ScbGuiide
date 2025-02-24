@@ -42,7 +42,13 @@ repositories {
             register("feature-api-config-plugin") {
                 description = "FeatureApiPlugin"
                 id = "feature-api-config-plugin"
-                implementationClass = "plugin.FeatureApiPlugin"
+                implementationClass = "plugin.feature.FeatureApiPlugin"
+            }
+
+            register("feature-impl-config-plugin") {
+                description = "FeatureImplPlugin"
+                id = "feature-impl-config-plugin"
+                implementationClass = "plugin.feature.FeatureImplPlugin"
             }
 
             register("lib-api-config-plugin") {
