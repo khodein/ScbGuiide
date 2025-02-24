@@ -38,6 +38,18 @@ repositories {
                 id = "room-config-plugin"
                 implementationClass = "plugin.RoomPlugin"
             }
+
+            register("feature-api-config-plugin") {
+                description = "FeatureApiPlugin"
+                id = "feature-api-config-plugin"
+                implementationClass = "plugin.FeatureApiPlugin"
+            }
+
+            register("lib-api-config-plugin") {
+                description = "LibPlugin"
+                id = "lib-api-config-plugin"
+                implementationClass = "plugin.LibPlugin"
+            }
         }
     }
 }

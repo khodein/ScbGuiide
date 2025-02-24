@@ -18,7 +18,7 @@ import com.spravochnic.scbguide.main.root_impl.router.RootRouterImpl
 import com.spravochnic.scbguide.quest.api.module.QuestCatalogModule
 import com.spravochnic.scbguide.quest.impl.module.QuestCatalogModuleImpl
 import com.spravochnic.scbguide.root_api.config.RootConfig
-import com.spravochnic.scbguide.root_api.config.RootRouter
+import com.spravochnic.scbguide.root_api.router.RootRouter
 import com.spravochnic.scbguide.splash.impl.component.DefaultSplashComponent
 import com.spravochnic.scbguide.splash.impl.module.SplashModuleImpl
 import com.spravochnic.scbguide.status.api.module.StatusModule

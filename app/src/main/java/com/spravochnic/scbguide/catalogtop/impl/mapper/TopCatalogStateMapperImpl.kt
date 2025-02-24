@@ -5,10 +5,10 @@ import com.spravochnic.scbguide.R
 import com.spravochnic.scbguide.catalogtop.api.component.TopCatalogComponent
 import com.spravochnic.scbguide.lectory.api.model.TopLectoryCatalogModel
 import com.spravochnic.scbguide.quest.api.model.TopQuestCatalogModel
+import com.spravochnic.scbguide.root_api.utils.ResManager
 import com.spravochnic.scbguide.uikit.navitem.NavItemComponent
 import com.spravochnic.scbguide.uikit.theme.color.ICON_PRIMARY
 import com.spravochnic.scbguide.uikit.toolbar.ToolbarComponent
-import com.spravochnic.scbguide.utils.resmanager.ResManager
 
 class TopCatalogStateMapperImpl(
     private val resManager: ResManager,

@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "ScbGuiide"
 include(":app")
- 
+include(":root-api")
+include(":utils")

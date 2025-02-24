@@ -9,7 +9,7 @@ import com.spravochnic.scbguide.lectory.api.model.TopLectoryCatalogModel
 import com.spravochnic.scbguide.lectory.api.repository.LectoryCatalogRepository
 import com.spravochnic.scbguide.quest.api.model.TopQuestCatalogModel
 import com.spravochnic.scbguide.quest.api.repostiory.QuestCatalogRepository
-import com.spravochnic.scbguide.root_api.config.RootRouter
+import com.spravochnic.scbguide.root_api.router.RootRouter
 import com.spravochnic.scbguide.uikit.request.RequestComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay

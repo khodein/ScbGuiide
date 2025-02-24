@@ -5,10 +5,10 @@ import com.spravochnic.scbguide.catalogroot.api.component.RootCatalogComponent
 import com.spravochnic.scbguide.catalogroot.api.model.RootCatalogListModel
 import com.spravochnic.scbguide.catalogroot.api.model.RootCatalogTypeModel
 import com.spravochnic.scbguide.catalogroot.impl.content.title.RootCatalogTitleComponent
+import com.spravochnic.scbguide.root_api.utils.ResManager
 import com.spravochnic.scbguide.uikit.navitem.NavItemComponent
 import com.spravochnic.scbguide.uikit.notice.NoticeItemComponent
 import com.spravochnic.scbguide.uikit.theme.color.Note
-import com.spravochnic.scbguide.utils.resmanager.ResManager
 
 class RootCatalogStateMapperImpl(
     private val resManager: ResManager,

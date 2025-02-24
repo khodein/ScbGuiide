@@ -2,6 +2,7 @@ package com.spravochnic.scbguide.utils.resmanager
 
 import android.content.Context
 import androidx.annotation.StringRes
+import com.spravochnic.scbguide.root_api.utils.ResManager
 
 class ResManagerImpl(
     private val context: Context,

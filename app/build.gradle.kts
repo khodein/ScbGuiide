@@ -13,3 +13,8 @@ android {
         compose = true
     }
 }
+
+dependencies {
+    implementation(project(":root-api"))
+    implementation(project(":utils"))
+}

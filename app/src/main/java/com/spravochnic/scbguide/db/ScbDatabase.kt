@@ -12,7 +12,6 @@ import com.spravochnic.scbguide.quest.api.db.catalog.TopQuestCatalogDao
 import com.spravochnic.scbguide.quest.api.db.catalog.TopQuestCatalogEntity
 import com.spravochnic.scbguide.status.api.db.status.StatusDao
 import com.spravochnic.scbguide.status.api.db.status.StatusEntity
-import com.spravochnic.scbguide.utils.Constants
 
 @Database(
     entities = [
@@ -37,7 +36,7 @@ abstract class ScbDatabase : RoomDatabase() {
                 val db = Room.databaseBuilder(
                     context,
                     ScbDatabase::class.java,
-                    Constants.SCB_DATABASE,
+                    com.spravochnic.scbguide.utils.Constants.SCB_DATABASE,
                 ).allowMainThreadQueries().build()
                 INSTANCE = db
                 db

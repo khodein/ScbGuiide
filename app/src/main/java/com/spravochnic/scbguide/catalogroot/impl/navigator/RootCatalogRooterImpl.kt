@@ -1,8 +1,8 @@
 package com.spravochnic.scbguide.catalogroot.impl.navigator
 
-import com.spravochnic.scbguide.catalogroot.api.router.RootCatalogRooter
 import com.spravochnic.scbguide.root_api.config.RootConfig
-import com.spravochnic.scbguide.root_api.config.RootRouter
+import com.spravochnic.scbguide.root_api.router.RootRouter
+import com.spravochnic.scbguide.root_api.router.catalog.RootCatalogRooter
 import java.lang.ref.WeakReference
 
 class RootCatalogRooterImpl : RootCatalogRooter {

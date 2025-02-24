@@ -1,8 +1,8 @@
 package com.spravochnic.scbguide.catalogtop.impl.router
 
-import com.spravochnic.scbguide.catalogtop.api.navigator.TopCatalogRouter
 import com.spravochnic.scbguide.root_api.config.RootConfig
-import com.spravochnic.scbguide.root_api.config.RootRouter
+import com.spravochnic.scbguide.root_api.router.RootRouter
+import com.spravochnic.scbguide.root_api.router.topcatalog.TopCatalogRouter
 import java.lang.ref.WeakReference
 
 class TopCatalogRouterImpl : TopCatalogRouter {

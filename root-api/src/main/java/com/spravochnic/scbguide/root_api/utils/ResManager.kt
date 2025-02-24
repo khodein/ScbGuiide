@@ -1,4 +1,4 @@
-package com.spravochnic.scbguide.utils.resmanager
+package com.spravochnic.scbguide.root_api.utils
 
 import androidx.annotation.StringRes
 

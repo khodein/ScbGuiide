@@ -5,7 +5,7 @@ import com.spravochnic.scbguide.catalogroot.api.model.RootCatalogListModel
 import com.spravochnic.scbguide.catalogroot.api.model.RootCatalogModel
 import com.spravochnic.scbguide.catalogroot.api.model.RootCatalogTypeModel
 import com.spravochnic.scbguide.catalogroot.api.repository.RootCatalogRepository
-import com.spravochnic.scbguide.utils.resmanager.ResManager
+import com.spravochnic.scbguide.root_api.utils.ResManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

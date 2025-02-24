@@ -7,7 +7,7 @@ import com.spravochnic.scbguide.catalogroot.api.model.RootCatalogListModel
 import com.spravochnic.scbguide.catalogroot.api.model.RootCatalogModel
 import com.spravochnic.scbguide.catalogroot.api.repository.RootCatalogRepository
 import com.spravochnic.scbguide.catalogroot.impl.mapper.RootCatalogStateMapper
-import com.spravochnic.scbguide.root_api.config.RootRouter
+import com.spravochnic.scbguide.root_api.router.RootRouter
 import com.spravochnic.scbguide.status.api.repository.StatusRepository
 import com.spravochnic.scbguide.uikit.navitem.NavItemComponent
 import com.spravochnic.scbguide.uikit.request.RequestComponent

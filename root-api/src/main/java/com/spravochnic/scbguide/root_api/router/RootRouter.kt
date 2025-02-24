@@ -1,8 +1,9 @@
-package com.spravochnic.scbguide.root_api.config
+package com.spravochnic.scbguide.root_api.router
 
 import com.arkivanov.decompose.router.stack.StackNavigation
-import com.spravochnic.scbguide.catalogroot.api.router.RootCatalogRooter
-import com.spravochnic.scbguide.catalogtop.api.navigator.TopCatalogRouter
+import com.spravochnic.scbguide.root_api.config.RootConfig
+import com.spravochnic.scbguide.root_api.router.catalog.RootCatalogRooter
+import com.spravochnic.scbguide.root_api.router.topcatalog.TopCatalogRouter
 
 interface RootRouter :
     RootCatalogRooter,
