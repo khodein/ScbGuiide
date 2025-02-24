@@ -23,19 +23,19 @@ rootProject.name = "ScbGuiide"
 
 include(":app")
 
-include(":root-api")
+include(":feature:root-api")
 
 include(":utils")
 include(":uikit")
 
-include(":status-api", ":status-impl")
+include(":feature:status-api", ":feature:status-impl")
 
-include(":splash-api", ":splash-impl")
+include(":feature:splash-api", ":feature:splash-impl")
 
-include(":catalog-root-api", ":catalog-root-impl")
+include(":feature:catalog-root-api", ":feature:catalog-root-impl")
 
-include(":catalog-top-api", ":catalog-top-impl")
-include(":lectory-api")
-include(":lectory-impl")
-include(":quest-api")
-include(":quest-impl")
+include(":feature:catalog-top-api", ":feature:catalog-top-impl")
+
+include(":feature:lectory-api", ":feature:lectory-impl")
+
+include(":feature:quest-api", ":feature:quest-impl")

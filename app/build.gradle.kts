@@ -15,25 +15,25 @@ android {
 }
 
 dependencies {
-    implementation(project(":root-api"))
+    implementation(project(":feature:root-api"))
 
-    implementation(project(":status-api"))
-    implementation(project(":status-impl"))
+    implementation(project(":feature:status-api"))
+    implementation(project(":feature:status-impl"))
 
-    implementation(project(":splash-api"))
-    implementation(project(":splash-impl"))
+    implementation(project(":feature:splash-api"))
+    implementation(project(":feature:splash-impl"))
 
-    implementation(project(":catalog-root-api"))
-    implementation(project(":catalog-root-impl"))
+    implementation(project(":feature:catalog-root-api"))
+    implementation(project(":feature:catalog-root-impl"))
 
-    implementation(project(":catalog-top-api"))
-    implementation(project(":catalog-top-impl"))
+    implementation(project(":feature:catalog-top-api"))
+    implementation(project(":feature:catalog-top-impl"))
 
-    implementation(project(":lectory-api"))
-    implementation(project(":lectory-impl"))
+    implementation(project(":feature:lectory-api"))
+    implementation(project(":feature:lectory-impl"))
 
-    implementation(project(":quest-api"))
-    implementation(project(":quest-impl"))
+    implementation(project(":feature:quest-api"))
+    implementation(project(":feature:quest-impl"))
 
     implementation(project(":uikit"))
     implementation(project(":utils"))
