@@ -4,7 +4,7 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 import com.spravochnic.scbguide.splash_api.component.SplashComponent
-import com.spravochnic.scbguide.splash_impl.R
+import com.spravochnic.scbguide.uikit.R
 import com.spravochnic.scbguide.utils.preview.PreviewComponentContext
 
 class PreviewSplashComponent :

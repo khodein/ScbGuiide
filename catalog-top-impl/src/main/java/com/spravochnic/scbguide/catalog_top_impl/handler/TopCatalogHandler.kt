@@ -2,19 +2,21 @@ package com.spravochnic.scbguide.catalog_top_impl.handler
 
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.essenty.instancekeeper.InstanceKeeper
+import com.spravochnic.scbguide.catalog_root_api.model.RootCatalogTypeModel
 import com.spravochnic.scbguide.catalog_top_api.component.TopCatalogComponent
 import com.spravochnic.scbguide.catalog_top_api.mapper.TopCatalogStateMapper
-import com.spravochnic.scbguide.lectory.api.model.TopLectoryCatalogModel
-import com.spravochnic.scbguide.lectory.api.repository.LectoryCatalogRepository
-import com.spravochnic.scbguide.quest.api.model.TopQuestCatalogModel
-import com.spravochnic.scbguide.quest.api.repostiory.QuestCatalogRepository
+import com.spravochnic.scbguide.lectory_api.model.TopLectoryCatalogModel
+import com.spravochnic.scbguide.lectory_api.repository.LectoryCatalogRepository
+import com.spravochnic.scbguide.quest_api.model.TopQuestCatalogModel
+import com.spravochnic.scbguide.quest_api.repostiory.QuestCatalogRepository
 import com.spravochnic.scbguide.root_api.router.RootRouter
+import com.spravochnic.scbguide.uikit.request.RequestComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class TopCatalogHandler(
-    private val rootCatalogTypeModel: com.spravochnic.scbguide.catalog_root_api.model.RootCatalogTypeModel,
+    private val rootCatalogTypeModel: RootCatalogTypeModel,
     private val scope: CoroutineScope,
     private val rootRouter: RootRouter,
     private val topCatalogStateMapper: TopCatalogStateMapper,
@@ -24,7 +26,7 @@ class TopCatalogHandler(
 ) : InstanceKeeper.Instance {
 
     val toolbarValue: MutableValue<TopCatalogComponent.ToolbarChild> = MutableValue(
-        if (rootCatalogTypeModel == com.spravochnic.scbguide.catalog_root_api.model.RootCatalogTypeModel.LECTORY) {
+        if (rootCatalogTypeModel == RootCatalogTypeModel.LECTORY) {
             topCatalogStateMapper.mapToolbarCatalog(rootRouter::pop)
         } else {
             topCatalogStateMapper.mapToolbarQuestCatalog(rootRouter::pop)
@@ -42,8 +44,8 @@ class TopCatalogHandler(
             updateLoading()
             delay(1000)
             when (rootCatalogTypeModel) {
-                com.spravochnic.scbguide.catalog_root_api.model.RootCatalogTypeModel.LECTORY -> loadLectoryCatalog()
-                com.spravochnic.scbguide.catalog_root_api.model.RootCatalogTypeModel.QUEST -> loadQuestCatalog()
+                RootCatalogTypeModel.LECTORY -> loadLectoryCatalog()
+                RootCatalogTypeModel.QUEST -> loadQuestCatalog()
             }
         }
     }
@@ -83,7 +85,7 @@ class TopCatalogHandler(
     }
 
     private fun updateLoading() {
-        stateValue.value = TopCatalogComponent.State.Request(com.spravochnic.scbguide.uikit.request.RequestComponent.State.Loading())
+        stateValue.value = TopCatalogComponent.State.Request(RequestComponent.State.Loading())
     }
 
     private fun updateSuccess(child: TopCatalogComponent.Child.NavItemChild) {
@@ -92,7 +94,7 @@ class TopCatalogHandler(
 
     private fun updateEmpty() {
         stateValue.value = TopCatalogComponent.State.Request(
-            com.spravochnic.scbguide.uikit.request.RequestComponent.State.Empty(
+            RequestComponent.State.Empty(
                 message = "Здесь пусто",
                 buttonReloadMessage = "Обновить?",
                 onReloadClick = ::loadData
@@ -102,7 +104,7 @@ class TopCatalogHandler(
 
     private fun updateFailure(throwable: Throwable) {
         stateValue.value = TopCatalogComponent.State.Request(
-            com.spravochnic.scbguide.uikit.request.RequestComponent.State.Error(
+            RequestComponent.State.Error(
                 message = throwable.message ?: "Произошла ошибка загрузки",
                 buttonReloadMessage = "Обновить?",
                 onReloadClick = ::loadData

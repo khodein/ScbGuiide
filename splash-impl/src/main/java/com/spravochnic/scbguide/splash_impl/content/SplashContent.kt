@@ -32,6 +32,10 @@ import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import com.spravochnic.scbguide.splash_api.component.SplashComponent
 import com.spravochnic.scbguide.splash_impl.preview.PreviewSplashComponent
 import com.spravochnic.scbguide.uikit.theme.color.Primary
+import com.spravochnic.scbguide.uikit.theme.color.Secondary
+import com.spravochnic.scbguide.uikit.theme.color.TextPrimary
+import com.spravochnic.scbguide.uikit.theme.style.Bold_22
+import com.spravochnic.scbguide.uikit.theme.style.Regular_12
 import kotlinx.coroutines.delay
 
 @Composable
@@ -84,8 +88,8 @@ fun SplashContent(
                     .wrapContentWidth()
                     .wrapContentHeight(),
                 text = stringResource(state.centerTextRes),
-                style = com.spravochnic.scbguide.uikit.theme.style.Bold_22,
-                color = com.spravochnic.scbguide.uikit.theme.color.Secondary,
+                style = Bold_22,
+                color = Secondary,
             )
         }
 
@@ -99,10 +103,10 @@ fun SplashContent(
                     start = 16.dp,
                     end = 16.dp
                 ),
-            style = com.spravochnic.scbguide.uikit.theme.style.Regular_12,
+            style = Regular_12,
             textAlign = TextAlign.Center,
             text = stringResource(state.footerTextRes),
-            color = com.spravochnic.scbguide.uikit.theme.color.TextPrimary,
+            color = TextPrimary,
         )
     }
 }

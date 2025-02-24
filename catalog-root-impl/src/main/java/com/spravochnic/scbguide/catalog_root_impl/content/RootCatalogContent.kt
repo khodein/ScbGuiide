@@ -64,7 +64,7 @@ private fun RequestChildContent(
     modifier: Modifier,
     requestState: RootCatalogComponent.State.Request
 ) {
-    com.spravochnic.scbguide.uikit.request.RequestContent(
+    RequestContent(
         modifier = modifier,
         state = requestState.state,
     )

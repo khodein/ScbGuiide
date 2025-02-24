@@ -4,8 +4,8 @@ import androidx.compose.ui.graphics.Color
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
-import com.spravochnic.scbguide.R
 import com.spravochnic.scbguide.catalog_top_api.component.TopCatalogComponent
+import com.spravochnic.scbguide.uikit.R
 import com.spravochnic.scbguide.uikit.request.RequestComponent
 import com.spravochnic.scbguide.uikit.toolbar.ToolbarComponent
 import com.spravochnic.scbguide.utils.preview.PreviewComponentContext
@@ -19,8 +19,8 @@ class PreviewTopCatalogComponent
 
     override val toolbarStateValue: Value<TopCatalogComponent.ToolbarChild> = MutableValue(
         TopCatalogComponent.ToolbarChild(
-            toolbarState = com.spravochnic.scbguide.uikit.toolbar.ToolbarComponent.State(
-                leading = com.spravochnic.scbguide.uikit.toolbar.ToolbarComponent.Leading.Arrow(),
+            toolbarState = ToolbarComponent.State(
+                leading = ToolbarComponent.Leading.Arrow(),
                 background = Color.Transparent
             ),
             imageRes = R.drawable.art_top_lectory
@@ -28,6 +28,6 @@ class PreviewTopCatalogComponent
     )
 
     override val stateValue: Value<TopCatalogComponent.State> = MutableValue(
-        TopCatalogComponent.State.Request(com.spravochnic.scbguide.uikit.request.RequestComponent.State.Idle)
+        TopCatalogComponent.State.Request(RequestComponent.State.Idle)
     )
 }

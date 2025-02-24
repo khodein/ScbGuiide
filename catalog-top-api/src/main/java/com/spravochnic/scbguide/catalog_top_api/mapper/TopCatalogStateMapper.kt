@@ -1,8 +1,8 @@
 package com.spravochnic.scbguide.catalog_top_api.mapper
 
 import com.spravochnic.scbguide.catalog_top_api.component.TopCatalogComponent
-import com.spravochnic.scbguide.lectory.api.model.TopLectoryCatalogModel
-import com.spravochnic.scbguide.quest.api.model.TopQuestCatalogModel
+import com.spravochnic.scbguide.lectory_api.model.TopLectoryCatalogModel
+import com.spravochnic.scbguide.quest_api.model.TopQuestCatalogModel
 import com.spravochnic.scbguide.uikit.navitem.NavItemComponent
 
 interface TopCatalogStateMapper {

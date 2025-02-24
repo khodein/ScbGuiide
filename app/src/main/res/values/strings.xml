@@ -1,7 +1,3 @@
 <resources>
     <string name="app_name">Справочник СЦБиста</string>
-
-    <string name="default_home_title_text">Добро пожаловать в справочник!</string>
-    <string name="default_home_notice_title_text">Совет по изучению устройств</string>
-    <string name="default_home_notice_description_text">Изучайте темы по очередности.\nКогда все темы будут изучены\nпроверь свои знания в тестах\nповышай уровень сложности\nпо мере исчезновения ошибок</string>
 </resources>

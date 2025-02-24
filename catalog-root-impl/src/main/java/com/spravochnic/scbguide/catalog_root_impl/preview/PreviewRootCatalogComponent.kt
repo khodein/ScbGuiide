@@ -3,9 +3,9 @@ package com.spravochnic.scbguide.catalog_root_impl.preview
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
-import com.spravochnic.scbguide.R
 import com.spravochnic.scbguide.catalog_root_api.component.RootCatalogComponent
 import com.spravochnic.scbguide.catalog_root_api.component.RootCatalogTitleComponent
+import com.spravochnic.scbguide.uikit.R
 import com.spravochnic.scbguide.uikit.navitem.NavItemComponent
 import com.spravochnic.scbguide.uikit.notice.NoticeItemComponent
 import com.spravochnic.scbguide.uikit.request.RequestComponent
@@ -49,7 +49,7 @@ class PreviewRootCatalogComponent :
                     text = "Лекторий",
                     subText = "3 уровня",
                     leading = NavItemComponent.State.Leading(
-                        res = R.drawable.ic_splash,
+                        res = R.drawable.ic_lectory,
                         tint = Note
                     ),
                     trailing = NavItemComponent.State.Trailing.Arrow()
@@ -61,7 +61,7 @@ class PreviewRootCatalogComponent :
                     text = "Лекторий",
                     subText = "3 уровня",
                     leading = NavItemComponent.State.Leading(
-                        res = R.drawable.ic_splash,
+                        res = R.drawable.ic_lectory,
                         tint = Note
                     ),
                     trailing = NavItemComponent.State.Trailing.Arrow()

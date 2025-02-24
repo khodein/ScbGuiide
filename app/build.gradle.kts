@@ -29,6 +29,12 @@ dependencies {
     implementation(project(":catalog-top-api"))
     implementation(project(":catalog-top-impl"))
 
+    implementation(project(":lectory-api"))
+    implementation(project(":lectory-impl"))
+
+    implementation(project(":quest-api"))
+    implementation(project(":quest-impl"))
+
     implementation(project(":uikit"))
     implementation(project(":utils"))
 }

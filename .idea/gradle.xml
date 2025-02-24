@@ -27,6 +27,10 @@
             <option value="$PROJECT_DIR$/catalog-root-impl" />
             <option value="$PROJECT_DIR$/catalog-top-api" />
             <option value="$PROJECT_DIR$/catalog-top-impl" />
+            <option value="$PROJECT_DIR$/lectory-api" />
+            <option value="$PROJECT_DIR$/lectory-impl" />
+            <option value="$PROJECT_DIR$/quest-api" />
+            <option value="$PROJECT_DIR$/quest-impl" />
             <option value="$PROJECT_DIR$/root-api" />
             <option value="$PROJECT_DIR$/splash-api" />
             <option value="$PROJECT_DIR$/splash-impl" />

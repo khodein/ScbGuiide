@@ -35,3 +35,7 @@ include(":splash-api", ":splash-impl")
 include(":catalog-root-api", ":catalog-root-impl")
 
 include(":catalog-top-api", ":catalog-top-impl")
+include(":lectory-api")
+include(":lectory-impl")
+include(":quest-api")
+include(":quest-impl")

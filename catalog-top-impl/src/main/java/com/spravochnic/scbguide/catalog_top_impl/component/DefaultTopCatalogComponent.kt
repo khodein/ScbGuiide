@@ -8,8 +8,8 @@ import com.spravochnic.scbguide.catalog_root_api.model.RootCatalogTypeModel
 import com.spravochnic.scbguide.catalog_top_api.component.TopCatalogComponent
 import com.spravochnic.scbguide.catalog_top_api.module.TopCatalogModule
 import com.spravochnic.scbguide.catalog_top_impl.handler.TopCatalogHandler
-import com.spravochnic.scbguide.lectory.api.module.LectoryCatalogModule
-import com.spravochnic.scbguide.quest.api.module.QuestCatalogModule
+import com.spravochnic.scbguide.lectory_api.module.LectoryCatalogModule
+import com.spravochnic.scbguide.quest_api.module.QuestCatalogModule
 import com.spravochnic.scbguide.uikit.request.RequestComponent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -24,15 +24,15 @@ class DefaultTopCatalogComponent(
 
     private val componentScope by lazy { coroutineScope(Dispatchers.Main + SupervisorJob()) }
 
-    private val rootCatalogTypeModel: com.spravochnic.scbguide.catalog_root_api.model.RootCatalogTypeModel by lazy {
-        com.spravochnic.scbguide.catalog_root_api.model.RootCatalogTypeModel.entries.find { it.alias == rootCatalogAlias }
-            ?: com.spravochnic.scbguide.catalog_root_api.model.RootCatalogTypeModel.LECTORY
+    private val rootCatalogTypeModel: RootCatalogTypeModel by lazy {
+        RootCatalogTypeModel.entries.find { it.alias == rootCatalogAlias }
+            ?: RootCatalogTypeModel.LECTORY
     }
 
     override val initialState: TopCatalogComponent.State = stateKeeper.consume(
         key = RETAINED_SAVED_INSTANCE_CATALOG_HANDLER,
         strategy = TopCatalogComponent.State.serializer()
-    ) ?: TopCatalogComponent.State.Request(com.spravochnic.scbguide.uikit.request.RequestComponent.State.Loading())
+    ) ?: TopCatalogComponent.State.Request(RequestComponent.State.Loading())
 
     override val toolbarStateValue: Value<TopCatalogComponent.ToolbarChild> by lazy { topCatalogHandler.toolbarValue }
     override val stateValue: Value<TopCatalogComponent.State> by lazy { topCatalogHandler.stateValue }

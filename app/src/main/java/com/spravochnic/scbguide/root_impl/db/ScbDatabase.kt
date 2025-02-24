@@ -4,12 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.spravochnic.scbguide.catalog_root_api.db.RootCatalogDao
-import com.spravochnic.scbguide.catalog_root_api.db.RootCatalogEntity
-import com.spravochnic.scbguide.lectory.api.db.TopLectoryCatalogDao
-import com.spravochnic.scbguide.lectory.api.db.TopLectoryCatalogEntity
-import com.spravochnic.scbguide.quest.api.db.catalog.TopQuestCatalogDao
-import com.spravochnic.scbguide.quest.api.db.catalog.TopQuestCatalogEntity
+import com.spravochnic.scbguide.lectory_api.db.TopLectoryCatalogDao
+import com.spravochnic.scbguide.lectory_api.db.TopLectoryCatalogEntity
+import com.spravochnic.scbguide.quest_api.db.catalog.TopQuestCatalogDao
+import com.spravochnic.scbguide.quest_api.db.catalog.TopQuestCatalogEntity
 import com.spravochnic.scbguide.status_api.db.status.StatusDao
 import com.spravochnic.scbguide.status_api.db.status.StatusEntity
 

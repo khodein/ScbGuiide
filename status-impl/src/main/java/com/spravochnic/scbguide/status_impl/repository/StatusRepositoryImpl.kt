@@ -1,8 +1,8 @@
 package com.spravochnic.scbguide.status_impl.repository
 
 import com.spravochnic.scbguide.catalog_root_api.repository.RootCatalogRepository
-import com.spravochnic.scbguide.lectory.api.repository.LectoryCatalogRepository
-import com.spravochnic.scbguide.quest.api.repostiory.QuestCatalogRepository
+import com.spravochnic.scbguide.lectory_api.repository.LectoryCatalogRepository
+import com.spravochnic.scbguide.quest_api.repostiory.QuestCatalogRepository
 import com.spravochnic.scbguide.status_api.db.status.StatusDao
 import com.spravochnic.scbguide.status_api.repository.StatusRepository
 

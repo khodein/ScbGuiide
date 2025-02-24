@@ -8,6 +8,8 @@ android {
 
 dependencies {
     implementation(project(":root-api"))
+    implementation(project(":quest-api"))
+    implementation(project(":lectory-api"))
 
     implementation(project(":uikit"))
 }

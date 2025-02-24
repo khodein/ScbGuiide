@@ -1,6 +1,8 @@
 package com.spravochnic.scbguide.status_impl.module
 
 import com.spravochnic.scbguide.catalog_root_api.module.RootCatalogModule
+import com.spravochnic.scbguide.lectory_api.module.LectoryCatalogModule
+import com.spravochnic.scbguide.quest_api.module.QuestCatalogModule
 import com.spravochnic.scbguide.root_api.module.RootModule
 import com.spravochnic.scbguide.status_api.db.status.StatusDao
 import com.spravochnic.scbguide.status_api.module.StatusModule

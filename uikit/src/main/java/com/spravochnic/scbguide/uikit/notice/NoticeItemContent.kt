@@ -21,7 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.spravochnic.scbguide.R
+import com.spravochnic.scbguide.uikit.R
 import com.spravochnic.scbguide.uikit.theme.color.Secondary
 import com.spravochnic.scbguide.uikit.theme.color.TextPrimaryInverse
 import com.spravochnic.scbguide.uikit.theme.style.ExtraBold_16

@@ -85,7 +85,7 @@ fun CatalogContent(
             ) {
                 val toolbarStateValue by component.toolbarStateValue.subscribeAsState()
 
-                com.spravochnic.scbguide.uikit.toolbar.ToolbarContent(
+                ToolbarContent(
                     modifier = Modifier
                         .fillMaxWidth(),
                     state = toolbarStateValue.toolbarState,
@@ -110,7 +110,7 @@ fun CatalogContent(
 
         when (val state = stateValue) {
             is TopCatalogComponent.State.Request -> {
-                com.spravochnic.scbguide.uikit.request.RequestContent(
+                RequestContent(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(paddings),
@@ -144,7 +144,7 @@ private fun LazyListScope.navItemContentItems(
             0
         }
 
-        com.spravochnic.scbguide.uikit.navitem.NavItemContent(
+        NavItemContent(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(
@@ -159,7 +159,7 @@ private fun LazyListScope.navItemContentItems(
                     shape = RoundedCornerShape(20.dp)
                 )
                 .background(
-                    color = com.spravochnic.scbguide.uikit.theme.color.Tertiary,
+                    color = Tertiary,
                     shape = RoundedCornerShape(20.dp)
                 ),
             state = item

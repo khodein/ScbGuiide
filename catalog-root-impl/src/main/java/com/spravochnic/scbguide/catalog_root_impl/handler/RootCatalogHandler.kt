@@ -3,10 +3,10 @@ package com.spravochnic.scbguide.catalog_root_impl.handler
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.essenty.instancekeeper.InstanceKeeper
 import com.spravochnic.scbguide.catalog_root_api.component.RootCatalogComponent
+import com.spravochnic.scbguide.catalog_root_api.mapper.RootCatalogStateMapper
 import com.spravochnic.scbguide.catalog_root_api.model.RootCatalogListModel
 import com.spravochnic.scbguide.catalog_root_api.model.RootCatalogModel
 import com.spravochnic.scbguide.catalog_root_api.repository.RootCatalogRepository
-import com.spravochnic.scbguide.catalog_root_impl.mapper.RootCatalogStateMapper
 import com.spravochnic.scbguide.root_api.router.RootRouter
 import com.spravochnic.scbguide.status_api.repository.StatusRepository
 import com.spravochnic.scbguide.uikit.navitem.NavItemComponent

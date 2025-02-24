@@ -15,7 +15,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.spravochnic.scbguide.catalog_root_api.component.RootCatalogTitleComponent
+import com.spravochnic.scbguide.uikit.R
 import com.spravochnic.scbguide.uikit.theme.color.TextPrimary
+import com.spravochnic.scbguide.uikit.theme.color.TextSecondary
 import com.spravochnic.scbguide.uikit.theme.style.Bold_16
 
 @Composable
@@ -55,7 +57,7 @@ fun HomeTitleContent(
                         .padding(start = 4.dp),
                     text = sub.text,
                     style = Bold_16,
-                    color = com.spravochnic.scbguide.uikit.theme.color.TextSecondary
+                    color = TextSecondary
                 )
             }
         }
