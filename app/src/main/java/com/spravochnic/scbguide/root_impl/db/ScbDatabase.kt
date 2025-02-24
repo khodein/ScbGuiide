@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.spravochnic.scbguide.catalog_root_api.db.RootCatalogDao
 import com.spravochnic.scbguide.lectory_api.db.TopLectoryCatalogDao
 import com.spravochnic.scbguide.lectory_api.db.TopLectoryCatalogEntity
 import com.spravochnic.scbguide.quest_api.db.catalog.TopQuestCatalogDao
@@ -17,11 +18,13 @@ import com.spravochnic.scbguide.status_api.db.status.StatusEntity
         com.spravochnic.scbguide.catalog_root_api.db.RootCatalogEntity::class,
         TopLectoryCatalogEntity::class,
         TopQuestCatalogEntity::class,
-    ], version = 1
+    ],
+    version = 1,
+    exportSchema = false,
 )
 abstract class ScbDatabase : RoomDatabase() {
     abstract fun statusDao(): StatusDao
-    abstract fun rootCatalogDao(): com.spravochnic.scbguide.catalog_root_api.db.RootCatalogDao
+    abstract fun rootCatalogDao(): RootCatalogDao
     abstract fun topLectoryCatalogDao(): TopLectoryCatalogDao
     abstract fun topQuestCatalogDao(): TopQuestCatalogDao
 
