@@ -18,15 +18,18 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class RootCatalogHandler(
-    private val rootRouter: RootRouter,
-    private val rootCatalogStateMapper: RootCatalogStateMapper,
-    private val statusRepository: StatusRepository,
-    private val rootCatalogRepository: RootCatalogRepository,
     private val scope: CoroutineScope,
     initialState: RootCatalogComponent.State,
-) : InstanceKeeper.Instance {
+) : InstanceKeeper.Instance, KoinComponent {
+
+    private val rootCatalogRepository by inject<RootCatalogRepository>()
+    private val rootCatalogStateMapper by inject<RootCatalogStateMapper>()
+    private val statusRepository by inject<StatusRepository>()
+    private val rootRouter by inject<RootRouter>()
 
     val stateValue: MutableValue<RootCatalogComponent.State> = MutableValue(initialState)
 

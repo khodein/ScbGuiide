@@ -6,18 +6,17 @@ import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 import com.spravochnic.scbguide.catalog_root_impl.preview.PreviewRootCatalogComponent
 import com.spravochnic.scbguide.root_impl.component.RootComponent
-import com.spravochnic.scbguide.main.module.ChildComponent
 import com.spravochnic.scbguide.utils.preview.PreviewComponentContext
 
 class PreviewRootComponent :
     RootComponent,
     ComponentContext by PreviewComponentContext {
 
-    override val stack: Value<ChildStack<*, ChildComponent>> =
+    override val stack: Value<ChildStack<*, RootComponent.ChildComponent>> =
         MutableValue(
             ChildStack(
                 configuration = Unit,
-                instance = ChildComponent.RootCatalogChild(PreviewRootCatalogComponent()),
+                instance = RootComponent.ChildComponent.RootCatalogChild(PreviewRootCatalogComponent()),
             )
         )
 

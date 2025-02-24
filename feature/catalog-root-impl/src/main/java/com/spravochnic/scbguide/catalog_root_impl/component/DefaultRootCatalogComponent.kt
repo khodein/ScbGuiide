@@ -5,16 +5,12 @@ import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.instancekeeper.retainedInstance
 import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
 import com.spravochnic.scbguide.catalog_root_api.component.RootCatalogComponent
-import com.spravochnic.scbguide.catalog_root_api.module.RootCatalogModule
 import com.spravochnic.scbguide.catalog_root_impl.handler.RootCatalogHandler
-import com.spravochnic.scbguide.status_api.module.StatusModule
 import com.spravochnic.scbguide.uikit.request.RequestComponent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 
 class DefaultRootCatalogComponent(
-    private val rootCatalogModule: RootCatalogModule,
-    private val statusModule: StatusModule,
     componentContext: ComponentContext,
 ) : RootCatalogComponent, ComponentContext by componentContext {
 
@@ -22,7 +18,7 @@ class DefaultRootCatalogComponent(
 
     override val stateValue: Value<RootCatalogComponent.State> by lazy { rootCatalogHandler.stateValue }
 
-    override val initialState by lazy {
+    private val initialState by lazy {
         stateKeeper.consume(
             key = RETAINED_SAVED_INSTANCE_ROOT_CATALOG_HANDLER,
             strategy = RootCatalogComponent.State.serializer()
@@ -32,11 +28,7 @@ class DefaultRootCatalogComponent(
     private val rootCatalogHandler = retainedInstance {
         RootCatalogHandler(
             initialState = initialState,
-            scope = componentScope,
-            rootCatalogRepository = rootCatalogModule.getRootCatalogRepository(),
-            rootCatalogStateMapper = rootCatalogModule.getRootCatalogStateMapper(),
-            statusRepository = statusModule.getStatusRepository(),
-            rootRouter = rootCatalogModule.getRouter(),
+            scope = componentScope
         )
     }
 

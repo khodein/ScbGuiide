@@ -26,7 +26,7 @@ class PreviewRootCatalogComponent :
         )
     }
 
-    override val initialState: RootCatalogComponent.State = RootCatalogComponent.State.Success(
+    private val initialState: RootCatalogComponent.State = RootCatalogComponent.State.Success(
         list = listOf(
             RootCatalogComponent.Child.TitleChild(
                 RootCatalogTitleComponent.State(

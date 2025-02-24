@@ -3,14 +3,17 @@ package com.spravochnic.scbguide.splash_impl.component
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
+import com.spravochnic.scbguide.root_api.router.RootRouter
 import com.spravochnic.scbguide.splash_api.component.SplashComponent
-import com.spravochnic.scbguide.splash_api.module.SplashModule
 import com.spravochnic.scbguide.uikit.R
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class DefaultSplashComponent(
     componentContext: ComponentContext,
-    private val splashModule: SplashModule,
-) : SplashComponent, ComponentContext by componentContext {
+) : SplashComponent, ComponentContext by componentContext, KoinComponent {
+
+    private val router by inject<RootRouter>()
 
     private val _state = MutableValue(
         SplashComponent.State(
@@ -24,6 +27,6 @@ class DefaultSplashComponent(
     override val state: Value<SplashComponent.State> = _state
 
     override fun onFinish() {
-        splashModule.getRouter().replaceToRootCatalog()
+        router.replaceToRootCatalog()
     }
 }

@@ -14,16 +14,19 @@ import com.spravochnic.scbguide.uikit.request.RequestComponent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class TopCatalogHandler(
     private val rootCatalogTypeModel: RootCatalogTypeModel,
     private val scope: CoroutineScope,
-    private val rootRouter: RootRouter,
-    private val topCatalogStateMapper: TopCatalogStateMapper,
-    private val questCatalogRepository: QuestCatalogRepository,
-    private val lectoryCatalogRepository: LectoryCatalogRepository,
     initialState: TopCatalogComponent.State,
-) : InstanceKeeper.Instance {
+) : InstanceKeeper.Instance, KoinComponent {
+
+    private val lectoryCatalogRepository by inject<LectoryCatalogRepository>()
+    private val questCatalogRepository by inject<QuestCatalogRepository>()
+    private val topCatalogStateMapper by inject<TopCatalogStateMapper>()
+    private val rootRouter by inject<RootRouter>()
 
     val toolbarValue: MutableValue<TopCatalogComponent.ToolbarChild> = MutableValue(
         if (rootCatalogTypeModel == RootCatalogTypeModel.LECTORY) {

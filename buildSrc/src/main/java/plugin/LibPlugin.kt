@@ -3,6 +3,7 @@ package plugin
 import config.AppConfig
 import deps.activityx.AndroidXCoreDep
 import deps.decompose.DecomposeDep
+import deps.koin.KoinDep
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.getByType
@@ -25,6 +26,7 @@ class LibPlugin : BaseFeaturePlugin() {
         val dependencies = buildList {
             add(AndroidXCoreDep.invoke(libs))
             add(DecomposeDep.invoke(libs))
+            add(KoinDep(libs))
         }
 
         target.applyDependencies(dependencies)

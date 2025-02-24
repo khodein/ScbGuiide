@@ -10,8 +10,6 @@ interface RootCatalogComponent {
 
     val stateValue: Value<State>
 
-    val initialState: State
-
     @Serializable
     sealed class State {
         @Serializable

@@ -16,7 +16,6 @@ import androidx.core.view.WindowInsetsControllerCompat
 import com.arkivanov.decompose.defaultComponentContext
 import com.spravochnic.scbguide.root_impl.component.DefaultRootComponent
 import com.spravochnic.scbguide.root_impl.content.RootContent
-import com.spravochnic.scbguide.main.module.MainModule
 
 
 class MainActivity : ComponentActivity() {
@@ -29,7 +28,6 @@ class MainActivity : ComponentActivity() {
 
         val rootComponent =
             DefaultRootComponent(
-                mainModule = MainModule.getInstance(this),
                 componentContext = defaultComponentContext(),
             )
 

@@ -18,7 +18,6 @@ import com.spravochnic.scbguide.ScbGuiideTheme
 import com.spravochnic.scbguide.catalog_root_impl.content.RootCatalogContent
 import com.spravochnic.scbguide.catalog_top_impl.content.CatalogContent
 import com.spravochnic.scbguide.root_impl.component.RootComponent
-import com.spravochnic.scbguide.main.module.ChildComponent
 import com.spravochnic.scbguide.root_impl.preview.PreviewRootComponent
 import com.spravochnic.scbguide.splash_impl.content.SplashContent
 
@@ -53,19 +52,19 @@ private fun Children(component: RootComponent, modifier: Modifier = Modifier) {
             color = MaterialTheme.colorScheme.background
         ) {
             when (val child = children.instance) {
-                is ChildComponent.RootCatalogChild -> RootCatalogContent(
+                is RootComponent.ChildComponent.RootCatalogChild -> RootCatalogContent(
                     component = child.component,
                     modifier = Modifier
                         .fillMaxSize()
                         .systemBarsPadding()
                 )
 
-                is ChildComponent.SplashChild -> SplashContent(
+                is RootComponent.ChildComponent.SplashChild -> SplashContent(
                     component = child.component,
                     modifier = Modifier.fillMaxSize()
                 )
 
-                is ChildComponent.TopCatalogChild -> CatalogContent(
+                is RootComponent.ChildComponent.TopCatalogChild -> CatalogContent(
                     component = child.component,
                     modifier = Modifier
                         .fillMaxSize()

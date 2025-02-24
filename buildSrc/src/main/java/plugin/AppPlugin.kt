@@ -2,6 +2,7 @@ package plugin
 
 import config.AppConfig
 import deps.activityx.AndroidXDep
+import deps.koin.KoinDep
 import deps.leekcanary.LeekCanaryDep
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
@@ -31,6 +32,7 @@ class AppPlugin : BasePlugin() {
 
         val dependencies = buildList {
             addAll(androidXDependencies)
+            add(KoinDep(libs))
             add(LeekCanaryDep(libs))
         }
 

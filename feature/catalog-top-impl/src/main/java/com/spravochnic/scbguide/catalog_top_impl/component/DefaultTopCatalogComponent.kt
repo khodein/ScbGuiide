@@ -6,18 +6,12 @@ import com.arkivanov.essenty.instancekeeper.retainedInstance
 import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
 import com.spravochnic.scbguide.catalog_root_api.model.RootCatalogTypeModel
 import com.spravochnic.scbguide.catalog_top_api.component.TopCatalogComponent
-import com.spravochnic.scbguide.catalog_top_api.module.TopCatalogModule
 import com.spravochnic.scbguide.catalog_top_impl.handler.TopCatalogHandler
-import com.spravochnic.scbguide.lectory_api.module.LectoryCatalogModule
-import com.spravochnic.scbguide.quest_api.module.QuestCatalogModule
 import com.spravochnic.scbguide.uikit.request.RequestComponent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 
 class DefaultTopCatalogComponent(
-    topCatalogModule: TopCatalogModule,
-    lectoryCatalogModule: LectoryCatalogModule,
-    questCatalogModule: QuestCatalogModule,
     rootCatalogAlias: String,
     componentContext: ComponentContext,
 ) : TopCatalogComponent, ComponentContext by componentContext {
@@ -41,10 +35,6 @@ class DefaultTopCatalogComponent(
         TopCatalogHandler(
             rootCatalogTypeModel = rootCatalogTypeModel,
             scope = componentScope,
-            lectoryCatalogRepository = lectoryCatalogModule.getLectoryCatalogRepository(),
-            questCatalogRepository = questCatalogModule.getQuestCatalogRepository(),
-            rootRouter = topCatalogModule.getRouter(),
-            topCatalogStateMapper = topCatalogModule.getTopCatalogStateMapper(),
             initialState = initialState,
         )
     }

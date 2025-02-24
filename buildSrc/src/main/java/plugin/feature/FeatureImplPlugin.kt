@@ -2,8 +2,7 @@ package plugin.feature
 
 import config.AppConfig
 import deps.activityx.AndroidXCoreDep
-import deps.activityx.AndroidXDep
-import deps.leekcanary.LeekCanaryDep
+import deps.koin.KoinDep
 import deps.room.RoomRuntimeDep
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
@@ -33,6 +32,7 @@ class FeatureImplPlugin : BaseFeaturePlugin() {
         val dependencies = buildList {
             add(AndroidXCoreDep(libs))
             add(RoomRuntimeDep.invoke(libs))
+            add(KoinDep(libs))
         }
 
         target.applyDependencies(dependencies)
